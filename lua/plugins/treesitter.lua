@@ -4,9 +4,13 @@ require('nvim-treesitter.configs').setup {
     highlight = {
         enable = true, -- Enable Treesitter for highlighting
         additional_vim_regex_highlighting = false, -- Disable fallback Vim regex-based highlighting
-        disable = {'nvim-tree'}
+        disable = {'nvim-tree'},
     },
     indent = {
-        enable = true -- Enable Treesitter for indentation
-    }
+        enable = true, -- Enable Treesitter for indentation
+        disable = {'lua'}, -- As of today, treesitter has trouble with lua indentation. Lucky for us, Neovim has a default LSP for lua installed which is used by default
+    },
+    autotag = {
+        enable = true,
+    },
 }

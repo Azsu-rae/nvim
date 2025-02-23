@@ -21,11 +21,8 @@ vim.opt.shiftwidth = 4          -- Number of spaces for indentation
 vim.opt.softtabstop = 4         -- Number of spaces when pressing <Tab>
 
 -- Disable traditional smartindent and autoindent
-vim.opt.smartindent = false
-vim.opt.autoindent = false
-
--- Enable Treesitter-based indentation
-vim.opt.indentexpr = 'nvim_treesitter#indent()'
+vim.opt.smartindent = true
+vim.opt.autoindent = true
 
 -- Highlighting current line
 vim.opt.cursorline = true
