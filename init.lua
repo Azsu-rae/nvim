@@ -3,7 +3,7 @@
 require 'options'
 
 -- Plugins
-require 'packer'
+require 'plugin_configs'
 
 -- Keymaps and autocmds for plugins and neovim in general
 require 'keymaps'
