@@ -1,4 +1,6 @@
 
+local actions = require 'telescope.actions'
+
 require('telescope').setup {
 
     -- use ui-select dropdown as our ui
@@ -7,6 +9,7 @@ require('telescope').setup {
             require("telescope.themes").get_dropdown {}
         }
     },
+
     -- set keymappings to navigate through items in the telescope io
     mappings = {
         i = {
@@ -23,4 +26,3 @@ require('telescope').setup {
     -- load the ui-select extension
     require("telescope").load_extension("ui-select")
 }
-

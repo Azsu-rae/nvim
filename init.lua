@@ -1,10 +1,10 @@
 
 -- Simple neovim options
-require 'config.options'
+require 'options'
 
 -- Plugins
-require 'config.packer'
+require 'packer'
 
 -- Keymaps and autocmds for plugins and neovim in general
-require 'config.keymaps'
-require 'config.autocmds'
+require 'keymaps'
+require 'autocmds'

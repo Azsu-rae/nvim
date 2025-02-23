@@ -49,11 +49,7 @@ end)
 -- Activating the OneDark color scheme
 vim.cmd('colorscheme darkplus')
 
-require 'config.plugins.lualine'
-require 'config.plugins.treesitter'
-require 'config.plugins.nvim-tree'
-require 'config.plugins.telescope'
-
-
-
-
+require 'plugins.lualine'
+require 'plugins.treesitter'
+require 'plugins.nvim-tree'
+require 'plugins.telescope'

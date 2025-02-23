@@ -17,7 +17,7 @@ require('nvim-tree').setup({
     },
     actions = {
         open_file = {
-           quit_on_open = true, -- Keep tree open when selecting a file
+           quit_on_open = true, -- Close tree when selecting a file
         },
         use_system_clipboard = true,
     },
