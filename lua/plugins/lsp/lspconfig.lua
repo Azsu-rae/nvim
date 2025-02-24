@@ -1,9 +1,10 @@
 
 local lspconfig = require("lspconfig")
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local servers = { "clangd", "lua_ls", "r_language_server", "pyright" }
 
--- setup the lua language server
-lspconfig.lua_ls.setup({
-    capabilities = capabilities,
-})
+for _, server in ipairs(servers) do
+  lspconfig[server].setup({
+    capabilities = require("cmp_nvim_lsp").default_capabilities(),
+  })
+end
