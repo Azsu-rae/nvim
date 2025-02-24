@@ -105,3 +105,5 @@ require 'plugins.cmp.nvim-cmp'
 require 'plugins.lsp.lspconfig'
 require 'plugins.dap.nvim-dap'
 
+-- Java LSP config
+require 'plugins.lsp.nvim-jdtls'
