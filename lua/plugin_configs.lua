@@ -1,9 +1,8 @@
 
 -- Ensure packer is installed
-local fn = vim.fn
-local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+    vim.fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
     vim.cmd 'packadd packer.nvim'
 end
 
@@ -44,16 +43,7 @@ require('packer').startup(function(use)
         },
     }
 
-    --------------------------------- LSP & DEBUGGING PLUGINS: THESE ARE ALL DEPENDENT ON EACH OTHER ---------------------------------
-
-    use {
-        "L3MON4D3/LuaSnip",
-        requires = {
-            "saadparwaiz1/cmp_luasnip", -- feed luasnip suggestions to cmp
-            "rafamadriz/friendly-snippets",  -- provide vscode like snippets to cmp
-        }
-    }
-
+    -- Autocompletion plugins
     use {
         'hrsh7th/nvim-cmp',          -- Completion engine
         requires = {
@@ -63,11 +53,15 @@ require('packer').startup(function(use)
             'hrsh7th/cmp-cmdline',   -- Command-line completion
             'L3MON4D3/LuaSnip',      -- Snippet engine
             'saadparwaiz1/cmp_luasnip', -- Snippet completion
+            "rafamadriz/friendly-snippets",  -- provide vscode like snippets to cmp
         }
     }
 
     -- To configure the Neovim LSP Client, which is installed by default (It is what Neovim will use to communicate with the LSPs)
     use 'neovim/nvim-lspconfig'
+
+    -- Java LSP (jdtls) configuration plugin (independent of nvim-lspconfig, directly configures Neovim's LSP Client with JDTLS)
+    use 'mfussenegger/nvim-jdtls'
 
     -- Neovim Debug Adapter Protocole. It is what Neovim will use to communicate with debuggers
     use {
@@ -79,7 +73,7 @@ require('packer').startup(function(use)
         },
     }
 
-    -- Package manager to install LSPs and Debuggers
+    -- Package manager for LSPs and Debuggers
     use 'williamboman/mason.nvim'
 
     -- Configure mason when it comes to LSPs
@@ -88,26 +82,23 @@ require('packer').startup(function(use)
     -- Configure mason when it comes to Debuggers
     use 'jay-babu/mason-nvim-dap.nvim'
 
-    -- Java LSP integration (independent of nvim-lspconfig, directly configures Neovim's LSP Client with JDTLS (the java LSP))
-    use 'mfussenegger/nvim-jdtls'
-
 end)
 
 -- Activating the OneDark color scheme
 vim.cmd('colorscheme darkplus')
 
 -- Utility plugins
-require 'plugins.lualine'
-require 'plugins.treesitter'
-require 'plugins.nvim-tree'
-require 'plugins.telescope'
+require 'plugins.util.lualine'
+require 'plugins.util.treesitter'
+require 'plugins.util.nvim-tree'
+require 'plugins.util.telescope'
 
--- LSP & Debugging plugins
-require 'plugins.cmp'
-require 'plugins.lspconfig'
-require 'plugins.nvim-dap'
+-- Autocompletion, LSP & Debugging plugins
+require 'plugins.cmp.nvim-cmp'
+require 'plugins.lsp.lspconfig'
+require 'plugins.dap.nvim-dap'
 
 -- Mason plugins
-require 'plugins.mason'
-require 'plugins.mason-lspconfig'
-require 'plugins.mason-nvim-dap'
+require 'plugins.mason.mason'
+require 'plugins.mason.mason-lspconfig'
+require 'plugins.mason.mason-nvim-dap'
