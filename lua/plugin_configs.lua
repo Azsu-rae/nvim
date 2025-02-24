@@ -54,6 +54,8 @@ require('packer').startup(function(use)
             'L3MON4D3/LuaSnip',      -- Snippet engine
             'saadparwaiz1/cmp_luasnip', -- Snippet completion
             "rafamadriz/friendly-snippets",  -- provide vscode like snippets to cmp
+            "ray-x/lsp_signature.nvim", -- For function signature autocompletion
+            "onsails/lspkind.nvim"
         }
     }
 
