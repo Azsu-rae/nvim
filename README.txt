@@ -9,3 +9,5 @@ nodejs
 npm
 
 R programming language
+
+nvim 10 or later
