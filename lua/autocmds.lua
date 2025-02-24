@@ -25,9 +25,9 @@ vim.api.nvim_create_autocmd("UIEnter", {
     end
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "java",
-    callback = function()
-        require 'plugins.nvim-jdtls'
-    end
-})
+--vim.api.nvim_create_autocmd("FileType", {
+--    pattern = "java",
+--    callback = function()
+--        require 'plugins.nvim-jdtls'
+--    end
+--})

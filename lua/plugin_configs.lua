@@ -93,12 +93,14 @@ require 'plugins.util.treesitter'
 require 'plugins.util.nvim-tree'
 require 'plugins.util.telescope'
 
--- Autocompletion, LSP & Debugging plugins
+-- Autocompletion plugins
 require 'plugins.cmp.nvim-cmp'
-require 'plugins.lsp.lspconfig'
-require 'plugins.dap.nvim-dap'
 
--- Mason plugins
-require 'plugins.mason.mason'
-require 'plugins.mason.mason-lspconfig'
-require 'plugins.mason.mason-nvim-dap'
+-- LSP plugins
+require 'plugins.lsp.lspconfig'
+require 'plugins.lsp.mason.mason'
+require 'plugins.lsp.mason.mason-lspconfig'
+require 'plugins.lsp.mason.mason-nvim-dap'
+
+-- Dubugging plugins
+require 'plugins.dap.nvim-dap'
