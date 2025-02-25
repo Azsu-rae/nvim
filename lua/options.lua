@@ -27,6 +27,12 @@ vim.opt.autoindent = true
 -- Highlighting current line
 vim.opt.cursorline = true
 
+-- Terminal options
+vim.o.shell = "powershell"
+vim.o.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command"
+vim.o.shellquote = ""
+vim.o.shellxquote = ""
+
 -- Disabling netrw 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
