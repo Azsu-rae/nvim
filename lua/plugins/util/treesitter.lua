@@ -1,6 +1,6 @@
 
 require('nvim-treesitter.configs').setup {
-    ensure_installed = {'java', 'lua', 'python', 'r', 'cpp', 'c'},
+    ensure_installed = {'java', 'lua', 'python', 'r', 'cpp', 'c', 'latex'},
     highlight = {
         enable = true, -- Enable Treesitter for highlighting
         additional_vim_regex_highlighting = true, -- Disable fallback Vim regex-based highlighting

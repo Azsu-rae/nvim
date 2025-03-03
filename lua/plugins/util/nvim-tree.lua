@@ -36,7 +36,7 @@ require('nvim-tree').setup({
         end
 
         -- Fix yank and paste:
-        vim.keymap.set('n', 'y', api.fs.copy.node, opts("Copy Name"))  
-        vim.keymap.set('n', 'p', api.fs.paste, opts("Paste File"))    
+        vim.keymap.set('n', 'y', api.fs.copy.node, opts("Copy Name"))
+        vim.keymap.set('n', 'p', api.fs.paste, opts("Paste File"))
     end,
 })

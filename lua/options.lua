@@ -1,4 +1,6 @@
 
+vim.env.R_LIBS_USER = "C:/Users/aitam/AppData/Local/R/win-library/4.4;C:/Program Files/R/R-4.4.2/library"
+
 -- Make 'yank' and 'paste' use the system clipboard
 vim.opt.clipboard = 'unnamedplus'
 
