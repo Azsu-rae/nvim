@@ -1,30 +1,30 @@
 
-require("lualine").setup({
+require("lualine").setup {
     options = {
         -- Use web devicons if you have a nerdfont installed
         icons_enabled = true,
         -- Set the theme to dracula, lualine documentation has other themes available as well
-        theme = "darkplus",
+        theme = "auto",
         -- Separate components of lua line with chevrons
-        component_separators = { left = "", right = "" },
+        component_separators = {left = "", right = ""},
         -- Separate sections with solid triangles
-        section_separators = { left = "", right = "" },
+        section_separators = {left = "", right = ""},
         -- disable the status line and winbar
         disabled_filetypes = {
             statusline = {},
             winbar = {},
         },
         -- Don't focus lualine on NvimTree
-        ignore_focus = { "NvimTree" },
+        ignore_focus = {"NvimTree"},
         -- Always divide lualine in the middle
         always_divide_middle = true,
         -- Disable global status
         globalstatus = false,
         -- Refresh every 1000 miliseconds
         refresh = {
-            statusline = 1000,
-            tabline = 1000,
-            winbar = 1000,
+            statusline = 100,
+            tabline = 100,
+            winbar = 100,
         },
     },
     -- Setup what each lualine section will contain
@@ -61,4 +61,4 @@ require("lualine").setup({
     winbar = {},
     inactive_winbar = {},
     extensions = {},
-})
+}

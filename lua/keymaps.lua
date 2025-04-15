@@ -1,9 +1,6 @@
 
 ------------------------------ GENERAL SETTINGS ------------------------------
 
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
 -- Remove search highlights after searching
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Remove search highlights" })
 
@@ -33,27 +30,27 @@ vim.keymap.set("v", ">", ">gv", { desc = "Indent right in visual mode" })
 ------------------------------ NVIM TREE ------------------------------
 
 -- Set keymaps for opening and closing nvim-tree
-vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', {
-    noremap = true,
-    silent = true
+vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", {
+	noremap = true,
+	silent = true,
 })
 
 ------------------------------ TELESCOPE ------------------------------
 
-local telescope_builtin = require('telescope.builtin')
+local telescope_builtin = require("telescope.builtin")
 
 -- set a vim motion to <Space> + f + f to search for files by their names
-vim.keymap.set('n', '<leader>ff', telescope_builtin.find_files, {desc = "[F]ind [F]iles"})
--- set a vim motion to <Space> + f + g to search for files based on the text inside of them
-vim.keymap.set('n', '<leader>fg', telescope_builtin.live_grep, {desc = "[F]ind by [G]rep"})
+vim.keymap.set("n", "<leader>ff", telescope_builtin.find_files, { desc = "[F]ind [F]iles" })
+-- set a vim motion to <Space> + f + g to search for files based on the text inside of them (search by file content)
+vim.keymap.set("n", "<leader>fg", telescope_builtin.live_grep, { desc = "[F]ind by [G]rep" })
 -- set a vim motion to <Space> + f + d to search for Code Diagnostics in the current project
-vim.keymap.set('n', '<leader>fd', telescope_builtin.diagnostics, { desc = '[F]ind [D]iagnostics' })
+vim.keymap.set("n", "<leader>fd", telescope_builtin.diagnostics, { desc = "[F]ind [D]iagnostics" })
 -- set a vim motion to <Space> + f + r to resume the previous search
-vim.keymap.set('n', '<leader>fr', telescope_builtin.resume, { desc = '[F]inder [R]esume' })
+vim.keymap.set("n", "<leader>fr", telescope_builtin.resume, { desc = "[F]inder [R]esume" })
 -- set a vim motion to <Space> + f + . to search for Recent Files
-vim.keymap.set('n', '<leader>f.', telescope_builtin.oldfiles, { desc = '[F]ind Recent Files ("." for repeat)' })
+vim.keymap.set("n", "<leader>f.", telescope_builtin.oldfiles, { desc = '[F]ind Recent Files ("." for repeat)' })
 -- set a vim motion to <Space> + f + b to search Open Buffers
-vim.keymap.set('n', '<leader>fb', telescope_builtin.buffers, { desc = '[F]ind Existing [B]uffers' })
+vim.keymap.set("n", "<leader>fb", telescope_builtin.buffers, { desc = "[F]ind Existing [B]uffers" })
 
 ------------------------------ LSP ------------------------------
 
@@ -66,7 +63,12 @@ vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "[C
 -- Set vim motion for <Space> + c + r to display references to the code under the cursor
 vim.keymap.set("n", "<leader>cr", require("telescope.builtin").lsp_references, { desc = "[C]ode Goto [R]eferences" })
 -- Set vim motion for <Space> + c + i to display implementations to the code under the cursor
-vim.keymap.set("n", "<leader>ci", require("telescope.builtin").lsp_implementations, { desc = "[C]ode Goto [I]mplementations" })
+vim.keymap.set(
+	"n",
+	"<leader>ci",
+	require("telescope.builtin").lsp_implementations,
+	{ desc = "[C]ode Goto [I]mplementations" }
+)
 -- Set a vim motion for <Space> + c + <Shift>R to smartly rename the code under the cursor
 vim.keymap.set("n", "<leader>cR", vim.lsp.buf.rename, { desc = "[C]ode [R]ename" })
 -- Set a vim motion for <Space> + c + <Shift>D to go to where the code/object was declared in the project (class file)
@@ -85,4 +87,4 @@ vim.keymap.set("n", "<leader>dt", dap.toggle_breakpoint, { desc = "[D]ebug [T]og
 -- set a vim motion for <Space> + d + s to start the debugger and launch the debugging ui
 vim.keymap.set("n", "<leader>ds", dap.continue, { desc = "[D]ebug [S]tart" })
 -- set a vim motion to close the debugging ui
-vim.keymap.set("n", "<leader>dc", dapui.close, {desc = "[D]ebug [C]lose"})
+vim.keymap.set("n", "<leader>dc", dapui.close, { desc = "[D]ebug [C]lose" })

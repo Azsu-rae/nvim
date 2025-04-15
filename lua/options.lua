@@ -1,30 +1,35 @@
 
-vim.env.R_LIBS_USER = "C:/Users/aitam/AppData/Local/R/win-library/4.4;C:/Program Files/R/R-4.4.2/library"
+-- Set <space> as the leader key
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+-- Set to true if you have a Nerd Font installed and selected in the terminal
+vim.g.have_nerd_font = true
 
 -- Make 'yank' and 'paste' use the system clipboard
-vim.opt.clipboard = 'unnamedplus'
+vim.opt.clipboard = "unnamedplus"
 
 -- Line numbers
-vim.opt.number = true           -- Enable line numbers
-vim.opt.relativenumber = true   -- Enable relative line numbers
-vim.opt.numberwidth = 2         -- Allows enough space for two numbers to be displayed on the number column
-vim.opt.signcolumn = 'yes'      -- Space at the left of the number column for line informations
+vim.opt.number = true -- Enable line numbers
+vim.opt.relativenumber = true -- Enable relative line numbers
+vim.opt.numberwidth = 2 -- Allows enough space for two numbers to be displayed on the number column
+vim.opt.signcolumn = "yes" -- Space at the left of the number column for line informations
 
 -- Line settings
-vim.opt.wrap = false            -- Displays everything on a single line
-vim.opt.scrolloff = 10          -- Always keeps 10 lines of context when scrolling
-vim.opt.sidescrolloff = 8       -- Same thing but sideways
-vim.opt.sidescroll = 1          -- Scroll sideways by 1 column at a time
+vim.opt.wrap = false -- Displays everything on a single line
+vim.opt.scrolloff = 10 -- Always keeps 10 lines of context when scrolling
+vim.opt.sidescrolloff = 8 -- Same thing but sideways
+vim.opt.sidescroll = 1 -- Scroll sideways by 1 column at a time
 
 -- Indentation
-vim.opt.expandtab = true        -- Use spaces instead of tabs
-vim.opt.tabstop = 4             -- Number of spaces for a tab
-vim.opt.shiftwidth = 4          -- Number of spaces for indentation
-vim.opt.softtabstop = 4         -- Number of spaces when pressing <Tab>
+vim.opt.expandtab = true -- Use spaces instead of tabs
+vim.opt.tabstop = 4 -- Number of spaces for a tab
+vim.opt.shiftwidth = 4 -- Number of spaces for indentation
+vim.opt.softtabstop = 4 -- Number of spaces when pressing <Tab>
 
 -- Disable traditional smartindent and autoindent
-vim.opt.smartindent = true
-vim.opt.autoindent = true
+vim.opt.smartindent = false
+vim.opt.autoindent = false
 
 -- Highlighting current line
 vim.opt.cursorline = true
@@ -35,7 +40,7 @@ vim.o.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command"
 vim.o.shellquote = ""
 vim.o.shellxquote = ""
 
--- Disabling netrw 
+-- Disabling netrw
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
@@ -46,10 +51,10 @@ vim.opt.backup = false
 vim.opt.conceallevel = 0
 
 -- Set file encoding to UTF-8
-vim.opt.fileencoding = 'utf-8'
+vim.opt.fileencoding = "utf-8"
 
 -- Enable mouse support
-vim.opt.mouse = 'a'
+vim.opt.mouse = "a"
 
 -- Hide mode display
 vim.opt.showmode = false
@@ -74,6 +79,6 @@ vim.opt.updatetime = 100
 vim.opt.writebackup = false
 
 -- Searching Behaviors
-vim.opt.hlsearch = true         -- Highlight all matches in search
-vim.opt.ignorecase = true       -- Ignore case in search
-vim.opt.smartcase = true        -- Match case if explicitly stated
+vim.opt.hlsearch = true -- Highlight all matches in search
+vim.opt.ignorecase = true -- Ignore case in search
+vim.opt.smartcase = true -- Match case if explicitly stated
