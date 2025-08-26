@@ -1,6 +1,6 @@
 
 require('nvim-treesitter.configs').setup {
-    ensure_installed = {'java', 'lua', 'python', 'cpp', 'c', 'latex', 'xml', 'query', 'markdown', 'markdown_inline', 'powershell', 'json'},
+    ensure_installed = {'java', 'lua', 'cpp', 'c', 'xml', 'markdown', 'markdown_inline', 'powershell'},
     ignore_install = {},
     modules = {},
     sync_install = false,

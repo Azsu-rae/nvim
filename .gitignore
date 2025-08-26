@@ -1,2 +1,5 @@
 
-plugin/
+./plugin/
+
+!lua/plugin/nvim/nvim-tree.lua
+!.gitignore
