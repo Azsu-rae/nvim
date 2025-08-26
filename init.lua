@@ -37,11 +37,14 @@ OS = vim.loop.os_uname().sysname
 -- frequently accessed fields --
 
 Cashe = {}
+
 Cashe.datapath = Vimscript.stdpath("data")
 Cashe.pluginpath = Cashe.datapath .. "/site/pack/packer/start"
 Cashe.packerpath = Cashe.pluginpath .. "/packer.nvim"
 Cashe.bootstrap = (Vimscript.empty(MatchPattern(Cashe.packerpath)) == 1)
+
 Cashe.colorscheme = {repo="rebelot/kanagawa.nvim", name="kanagawa", ref="/kanagawa.nvim"}
+Cashe.newcolorscheme = Vimscript.empty(MatchPattern(Cashe.pluginpath .. Cashe.colorscheme.ref)) == 1
 
 -- configuration --
 

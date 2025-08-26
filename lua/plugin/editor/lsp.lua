@@ -51,7 +51,7 @@ local setup_server = function(server_name)
 end
 
 require("mason-lspconfig").setup {
-     ensure_installed = {"lua_ls", "jdtls", "clangd", "pyright", "texlab", "lemminx", "bashls"},
+     ensure_installed = {"lua_ls", "clangd", "pyright", "texlab", "lemminx", "bashls"},
      handlers = {setup_server},
      automatic_enable = {
          exclude = {

@@ -1,0 +1,10 @@
+
+C compiler (MSVN on windows)
+make
+git
+
+Terminal with a nerd font installed
+tree-sitter-cli
+ripgrep
+
+bash in the PATH env var

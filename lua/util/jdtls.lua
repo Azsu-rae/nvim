@@ -88,12 +88,21 @@ local on_attach = function(_, _)
     vim.cmd.cd(root_dir)
 end
 
+local cmd = getLaunchCmd()
+local installed = true
+if cmd == nil then
+    installed = false
+end
+
 local config = {
-    cmd =  getLaunchCmd(),
+    cmd = cmd,
     root_dir = root_dir,
     capabilities = require('cmp_nvim_lsp').default_capabilities(),
     init_options = init_options,
     on_attach = on_attach,
 }
 
-return config
+return {
+    config=config,
+    installed=installed,
+}

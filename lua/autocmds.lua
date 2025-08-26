@@ -24,7 +24,6 @@ Autocmd {
 events = 'User',
     opts = {
         pattern = 'PackerComplete',
-        once = true,
         callback = function ()
             vim.notify("Please restart Neovim for setup completion!")
         end
@@ -41,7 +40,6 @@ Autocmd {
     opts = {
         callback = function()
             local display_projects = function ()
-                -- Ensure telescope opens only if no file is opened and the buffer isn't a terminal
                 if Vimscript.argc() == 0 and vim.bo.filetype ~= "terminal" then
                     require("util.projects_picker").display()
                 end
@@ -58,13 +56,13 @@ Autocmd {
         pattern = "java",
         callback = function ()
 
-             local config = require('util.jdtls_config')
-             if config == nil then
-                 vim.notify("eclipse.jdt.ls is not installed, install via mason")
-                 return
-             end
+            local jdtls = require('util.jdtls')
+            if not jdtls.installed then
+                vim.notify("eclipse.jdt.ls is not installed, install via mason")
+                return
+            end
 
-            require('jdtls').start_or_attach(config)
+            require('jdtls').start_or_attach(jdtls.config)
         end,
     }
 }

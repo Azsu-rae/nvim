@@ -1,5 +1,4 @@
 
--- Telescope configuration
 local telescope = require('telescope')
 
 telescope.setup {
@@ -41,18 +40,6 @@ telescope.setup {
             case_mode = "smart_case",        -- Case sensitivity: smart_case, ignore_case, or respect_case
         },
     },
-}
-
-local openFile = function (prompt_bufnr)
-    vim.cmd("NvimTreeClose")
-    require('telescope.actions').select_default(prompt_bufnr)  -- still open the file
-end
-
-require('telescope.builtin').find_files {
-    attach_mappings = function(_, map)
-        map("i", "<CR>", openFile)
-        return true
-    end,
 }
 
 -- Load extensions

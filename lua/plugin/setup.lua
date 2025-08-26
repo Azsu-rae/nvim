@@ -110,19 +110,33 @@ local function plugins(use)
 
     -- configures the lua language server for the neovim config environment
     use "folke/lazydev.nvim"
+
+    -- Deep buffer integration for Git
+    use {
+        "lewis6991/gitsigns.nvim",
+        config = function()
+            require("gitsigns").setup {
+                signs = {
+                    add = { text = '+' },
+                    change = { text = '~' },
+                    delete = { text = '_' },
+                    topdelete = { text = '‾' },
+                    changedelete = { text = '~' },
+                },
+            }
+        end,
+    }
 end
 
 -- Packer configuration
 packer.startup(plugins)
 
-if Cashe.bootstrap then
+if Cashe.bootstrap or Cashe.newcolorscheme then
     packer.sync()
     return
 end
 
-if Vimscript.empty(MatchPattern(Cashe.pluginpath .. Cashe.colorscheme.ref)) == 0 then
-    vim.cmd.colorscheme(Cashe.colorscheme.name)
-end
+vim.cmd.colorscheme(Cashe.colorscheme.name)
 
 -- Neovim plugins
 require 'plugin.nvim.lualine'

@@ -3,7 +3,7 @@ function SetKeymap(mode, key, map, opts)
     if type(opts) == "table" then
         vim.keymap.set(mode, key, map, opts)
     elseif type(opts) == "string" then
-        vim.keymap.set(mode, key, map, {desc=opts, silent=true})
+        vim.keymap.set(mode, key, map, {desc=opts, silent=false})
     end
 end
 
@@ -84,4 +84,5 @@ SetKeymap("n", "<leader>di", dap.step_into, "Step [I]nto")
 SetKeymap("n", "<leader>do", dap.step_over, "Step [O]ver")
 SetKeymap("n", "<leader>du", dap.step_out, "Step Out")
 SetKeymap("n", "<leader>dr", dap.repl.open, "Open [R]EPL")
+SetKeymap("n", "<leader>dq", dap.terminate, "Update Debug Configs")
 SetKeymap("n", "<leader>dt", "<cmd>JdtUpdateDebugConfigs<CR>", "Update Debug Configs")

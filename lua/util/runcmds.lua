@@ -46,7 +46,11 @@ local function runcmd(cmd)
                 local run = function()
                     local dir = require("util.dir")
                     if dir.inProject() then
-                        vim.cmd("split | term " .. dir.project.module() .. "/run.sh")
+                        local module = dir.project.module()
+                        if OS:match("Windows") then
+                            module = "/mnt/c" .. module:sub(3)
+                        end
+                        vim.cmd('split | term bash "' .. module .. '/run.sh"')
                     else
                         runfile(cmd)
                     end
