@@ -6,6 +6,9 @@ function Autocmd(cmd)
     vim.api.nvim_create_autocmd(cmd.events, cmd.opts)
 end
 
+-- to run programs
+require 'utils.runcmds'
+
 -- Highlight when yanking (copying) text.
 -- Try it with `yap` in normal mode. See `:h vim.hl.on_yank()`
 Autocmd {
@@ -20,21 +23,6 @@ Autocmd {
             }
         end
     },
-}
-
--- Sets keymaps to run single files programs
-Autocmd {
-    events = "LspAttach",
-    opts = {
-        callback = function(args)
-            local rootdir = require('utils.dir').module()
-            if rootdir then
-                require('utils.runcmds').setProjectRunCmd(rootdir)
-            else
-                require('utils.runcmds').setSingleFileRunCmd(vim.bo[args.buf].filetype)
-            end
-        end
-    }
 }
 
 if Bootstrap then

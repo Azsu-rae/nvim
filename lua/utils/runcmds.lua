@@ -1,6 +1,4 @@
 
-local M = {}
-
 local function runfile(cmd)
 
     local fullpath = vim.fn.expand("%:p")
@@ -16,7 +14,8 @@ local function runfile(cmd)
                         opts = {
                             buffer = vim.api.nvim_get_current_buf(),
                             callback = function()
-                                 os.remove(vim.fn.fnamemodify(fullpath, ":h") .. '/' .. compilation_output)
+                                local outputdir = vim.fn.fnamemodify(fullpath, ':h')
+                                os.remove(outputdir .. '/' .. compilation_output)
                             end,
                         },
                     }
@@ -31,47 +30,6 @@ local function runfile(cmd)
     end
 end
 
-local function runcmd(cmd)
-    Autocmd {
-        events = "FileType",
-        opts = {
-            pattern = cmd.filetype,
-            callback = function()
-                SetKeymap("n", cmd.keysequence, function() runfile(cmd) end, {buffer = true})
-            end
-        }
-    }
-end
-
-local windows = OS:match("Windows")
-local extention = windows and ".exe" or ".out"
-
-local runconfig = {}
-
-runconfig.c = {
-    filetype = "c",
-    keysequence = "<leader>run",
-    compiled = true,
-    output_ext = extention,
-    template = {
-        compile = "gcc \"%s\" -o \"%s\"",
-        exec = "./%s",
-    }
-}
-
-runconfig.lua = {
-    filetype = "lua",
-    keysequence = "<leader>run",
-    compiled = false,
-    template = {
-        exec = "lua %s"
-    }
-}
-
-M.setSingleFileRunCmd = function(filetype)
-    runcmd(runconfig[filetype])
-end
-
 local function runproject(rootdir)
 
     local runscript = rootdir .. "/run.sh"
@@ -83,8 +41,66 @@ local function runproject(rootdir)
     vim.cmd(string.format(s, runscript))
 end
 
-M.setProjectRunCmd = function(rootdir)
-    SetKeymap('n', '<leader>run', function() runproject(rootdir) end, {buffer = true})
+local function runningmethod(cmd)
+    local rootdir = require('utils.dir').module()
+    if rootdir then
+        runproject(rootdir)
+    else
+        runfile(cmd)
+    end
 end
 
-return M
+local function runcmd(cmd)
+    Autocmd {
+        events = "FileType",
+        opts = {
+            pattern = cmd.filetype,
+            callback = function()
+                SetKeymap("n", cmd.keysequence, function() runningmethod(cmd) end, {buffer = true})
+            end
+        }
+    }
+end
+
+local windows = OS:match("Windows")
+local extention = windows and ".exe" or ".out"
+
+runcmd {
+    filetype = "c",
+    keysequence = "<leader>run",
+    compiled = true,
+    output_ext = extention,
+    template = {
+        compile = "gcc \"%s\" -o \"%s\"",
+        exec = "./%s",
+    }
+}
+
+runcmd {
+    filetype = "cpp",
+    keysequence = "<leader>run",
+    compiled = true,
+    output_ext = extention,
+    template = {
+        compile = "g++ \"%s\" -o \"%s\"",
+        exec = "./%s",
+    }
+}
+
+runcmd {
+    filetype = "lua",
+    keysequence = "<leader>run",
+    compiled = false,
+    template = {
+        exec = "lua %s"
+    }
+}
+
+runcmd {
+    filetype = "java",
+    keysequence = "<leader>run",
+    compiled = false,
+    template = {
+        exec = "java %s"
+    }
+}
