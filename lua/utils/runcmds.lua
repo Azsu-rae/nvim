@@ -32,12 +32,14 @@ end
 
 local function runproject(rootdir)
 
-    local runscript = rootdir .. "/run.sh"
+    local runscript = rootdir .. "/run."
     if OS:match("Windows") then
-        runscript = "/c" .. string.sub(runscript, 3)
+        runscript = runscript .. "ps1"
+    else
+        runscript = runscript .. "sh"
     end
 
-    local s = ":split | term bash -c \"%s\""
+    local s = ":split | term %s"
     vim.cmd(string.format(s, runscript))
 end
 
