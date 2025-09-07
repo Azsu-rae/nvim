@@ -77,7 +77,7 @@ local function git()
         vim.notify('No .git found!')
     end
 end
-SetKeymap("n", "<leader>git", git,"Push to Git Repo")
+SetKeymap("n", "<leader>git", git, "Push to Git Repo")
 
 runcmd {
     filetype = "c",
