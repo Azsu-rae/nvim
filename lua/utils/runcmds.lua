@@ -70,9 +70,9 @@ local function runcmd(cmd)
 end
 
 local function git()
-    local module = require('utils.dir').module()
-    if module then
-        gitpush(module)
+    local root = require('utils.dir').root()
+    if root then
+        gitpush(root)
     else
         vim.notify('No .git found!')
     end
