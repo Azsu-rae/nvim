@@ -1,4 +1,8 @@
 
+local windows = OS:match("Windows")
+local binary_extention = windows and ".exe" or ".out"
+local script_extension = windows and ".ps1" or ".sh"
+
 local function runfile(cmd)
 
     local fullpath = vim.fn.expand("%:p")
@@ -30,23 +34,24 @@ local function runfile(cmd)
     end
 end
 
-local function runproject(rootdir)
-
-    local runscript = rootdir .. "/run."
-    if OS:match("Windows") then
-        runscript = runscript .. "ps1"
-    else
-        runscript = runscript .. "sh"
-    end
-
+local function runscript(rootdir, name)
+    local script = rootdir .. "/" .. name .. script_extension
     local s = ":split | term %s"
-    vim.cmd(string.format(s, runscript))
+    vim.cmd(string.format(s, script))
+end
+
+local function gitpush(rootdir)
+    runscript(rootdir, "git")
+end
+
+local function runproject(rootdir)
+    runscript(rootdir, "run")
 end
 
 local function runningmethod(cmd)
-    local rootdir = require('utils.dir').module()
-    if rootdir then
-        runproject(rootdir)
+    local module = require('utils.dir').module()
+    if module then
+        runproject(module)
     else
         runfile(cmd)
     end
@@ -64,14 +69,21 @@ local function runcmd(cmd)
     }
 end
 
-local windows = OS:match("Windows")
-local extention = windows and ".exe" or ".out"
+local function git()
+    local module = require('utils.dir').module()
+    if module then
+        gitpush(module)
+    else
+        vim.notify('No .git found!')
+    end
+end
+SetKeymap("n", "<leader>git", git,"Push to Git Repo")
 
 runcmd {
     filetype = "c",
     keysequence = "<leader>run",
     compiled = true,
-    output_ext = extention,
+    output_ext = binary_extention,
     template = {
         compile = "gcc \"%s\" -o \"%s\"",
         exec = "./%s",
@@ -82,7 +94,7 @@ runcmd {
     filetype = "cpp",
     keysequence = "<leader>run",
     compiled = true,
-    output_ext = extention,
+    output_ext = binary_extention,
     template = {
         compile = "g++ \"%s\" -o \"%s\"",
         exec = "./%s",

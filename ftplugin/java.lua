@@ -2,6 +2,17 @@
 vim.api.nvim_set_hl(0, "@lsp.type.modifier.java", {link = "Keyword"})
 vim.api.nvim_set_hl(0, "@lsp.type.namespace.java", {link = "@variable"})
 
+local function findfiles()
+    require("telescope.builtin").find_files {
+        no_ignore = true,
+        file_ignore_patterns = {
+            "%.class",
+        },
+    }
+end
+
+SetKeymap("n", "<leader>ff", findfiles, "[F]ind [F]iles")
+
 -- get the project root
 local dir = require("utils.dir")
 local rootdir = dir.root()
