@@ -9,6 +9,18 @@ function SetKeymap(mode, key, map, opts)
     end
 end
 
+-- In insert mode, make <BS> delete all indent on an "empty" line
+vim.keymap.set("i", "<BS>", function()
+  local col = vim.fn.col(".")
+  local line = string.sub(vim.fn.getline("."), 1, col - 1)
+
+  if line:match("^%s*$") and col > 1 then
+    return "<C-u>"  -- delete everything before the cursor on this line
+  else
+    return "<BS>"   -- normal backspace
+  end
+end, { expr = true, noremap = true })
+
 ------------------------------ GENERAL SETTINGS ------------------------------
 
 SetKeymap("n", "<Esc>", "<cmd>nohlsearch<CR>", "Remove search highlights")
@@ -65,7 +77,7 @@ SetKeymap("n", "<leader>e", require('nvim-tree.api').tree.toggle, "Toggle NvimTr
 
 local telescope_builtin = require("telescope.builtin")
 
-SetKeymap("n", "<leader>ff", function() telescope_builtin.find_files({no_ignore = true}) end, "[F]ind [F]iles")
+SetKeymap("n", "<leader>ff", telescope_builtin.find_files, "[F]ind [F]iles")
 SetKeymap("n", "<leader>fg", telescope_builtin.live_grep, "[F]ind by [G]rep")
 SetKeymap("n", "<leader>fd", telescope_builtin.diagnostics, "[F]ind [D]iagnostics")
 SetKeymap("n", "<leader>fr", telescope_builtin.resume, "[F]inder [R]esume")
@@ -87,3 +99,28 @@ SetKeymap("n", "<leader>cd", vim.lsp.buf.definition, "[C]ode Goto [D]efinition")
 SetKeymap("n", "<leader>cD", vim.lsp.buf.declaration, "[C]ode Goto [D]eclaration")
 SetKeymap("n", "<leader>cR", vim.lsp.buf.rename, "[C]ode [R]ename")
 SetKeymap({"n", "v"}, "<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ctions")
+
+------------------------------ DAP ------------------------------
+
+local dap = require("dap")
+
+-- Keymaps
+SetKeymap("n", "<leader>dc", dap.continue, "DAP Continue")
+SetKeymap("n", "<leader>dov", dap.step_over, "DAP Step Over")
+SetKeymap("n", "<leader>dou", dap.step_out, "DAP Step Out")
+SetKeymap("n", "<leader>dsi", dap.step_into, "DAP Step Into")
+SetKeymap("n", "<leader>db", dap.toggle_breakpoint, "DAP Toggle Breakpoint")
+
+local function setbp()
+    dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
+end
+SetKeymap("n", "<leader>dB", setbp, "DAP Conditional Breakpoint")
+
+local function log()
+    dap.set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
+end
+SetKeymap("n", "<leader>dl", log, "DAP Log Point")
+
+SetKeymap("n", "<leader>dr", dap.repl.open, "DAP REPL")
+SetKeymap("n", "<leader>dl", dap.run_last, "DAP Run Last")
+SetKeymap("n", "<leader>dq", dap.terminate, "DAP Terminate")

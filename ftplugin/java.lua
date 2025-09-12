@@ -2,17 +2,6 @@
 vim.api.nvim_set_hl(0, "@lsp.type.modifier.java", {link = "Keyword"})
 vim.api.nvim_set_hl(0, "@lsp.type.namespace.java", {link = "@variable"})
 
-local function findfiles()
-    require("telescope.builtin").find_files {
-        no_ignore = true,
-        file_ignore_patterns = {
-            "%.class",
-        },
-    }
-end
-
-SetKeymap("n", "<leader>ff", findfiles, "[F]ind [F]iles")
-
 -- get the project root
 local dir = require("utils.dir")
 local rootdir = dir.root()
@@ -63,9 +52,9 @@ local function getLaunchCmd()
     }
 end
 
--- microsoft's java-debug cloned and build from github
-local java_debug_dir = "/java-debug/com.microsoft.java.debug.plugin/target/"
-local java_debug = "com.microsoft.java.debug.plugin-*.jar"
+-- microsoft's java-debug installed using mason (run :MasonInstall java-debug-adapter)
+local java_debug_dir = "/mason/packages/java-debug-adapter/extension/server"
+local java_debug = "/com.microsoft.java.debug.plugin-*.jar"
 local java_debug_path = vim.fn.glob(vim.fn.stdpath('data') .. java_debug_dir .. java_debug)
 local debugger_present = vim.fn.empty(java_debug_path) == 0
 

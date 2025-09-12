@@ -27,3 +27,15 @@ ls.add_snippets("java", {
         t(tail),
     }),
 })
+
+header = {"return new Result(false, \""}
+mid = {"\", null);"}
+
+-- Define a snippet for Lua
+ls.add_snippets("java", {
+    s("badresult", {
+        t(header),
+        i(1),
+        t(mid),
+    }),
+})

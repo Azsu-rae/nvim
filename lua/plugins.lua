@@ -130,6 +130,14 @@ local function plugins(use)
         end,
     }
 
+    -- debugger
+    use {
+        'mfussenegger/nvim-dap',
+        config= function ()
+            require('plugins.dev.nvim-dap').setup()
+        end
+    }
+
     -- Utilities --
 
     -- configures the lua language server for the neovim config environment
