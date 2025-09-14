@@ -118,3 +118,12 @@ runcmd {
         exec = "java %s"
     }
 }
+
+runcmd {
+    filetype = "dart",
+    keysequence = "<leader>run",
+    compiled = false,
+    template = {
+        exec = "dart %s"
+    }
+}

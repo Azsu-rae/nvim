@@ -4,6 +4,11 @@
 PROJECTS_DIR = "C:\\Users\\a50055268\\Projects"
 Colorscheme = "rebelot/kanagawa.nvim"
 OS = vim.uv.os_uname().sysname
+Installed = {
+    SDK = {
+        flutter = true,
+    },
+}
 
 -- vimscript global variables --
 

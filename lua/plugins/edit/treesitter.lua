@@ -2,7 +2,7 @@
 local M = {}
 
 local config = {
-    ensure_installed = {"c", "cpp", "java", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline"},
+    ensure_installed = {"c", "cpp", "java", "dart", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline"},
     sync_install = false,
     auto_install = false,
     highlight = {
