@@ -6,42 +6,40 @@ local script_extension = windows and ".ps1" or ".sh"
 local function runfile(cmd)
 
     local fullpath = vim.fn.expand("%:p")
-    if cmd.compiled then
-        local compilation_output = vim.fn.fnamemodify(fullpath, ":t:r") .. cmd.output_ext
-        local compile_cmd = string.format(cmd.template.compile, fullpath, compilation_output)
-        local post_compilation = function (_, exit_code)
-            if exit_code == 0 and vim.fn.filereadable(compilation_output) == 1 then
-                vim.cmd("split | term " .. string.format(cmd.template.exec, compilation_output))
-                if not cmd.save_output then
-                    Autocmd {
-                        events = {"BufWipeout", "BufUnload"},
-                        opts = {
-                            buffer = vim.api.nvim_get_current_buf(),
-                            callback = function()
-                                local outputdir = vim.fn.fnamemodify(fullpath, ':h')
-                                os.remove(outputdir .. '/' .. compilation_output)
-                            end,
-                        },
-                    }
-                end
-            else
-                vim.notify("Compilation failed: " .. compile_cmd)
-            end
-        end
-        vim.fn.jobstart(compile_cmd, {on_exit = post_compilation})
-    else
+    if not cmd.compiled then
         vim.cmd("split | term " .. string.format(cmd.template.exec, fullpath))
+        return
     end
+
+    local compilation_output = vim.fn.fnamemodify(fullpath, ":t:r") .. cmd.output_ext
+    local compile_cmd = string.format(cmd.template.compile, fullpath, compilation_output)
+    local post_compilation = function (_, exit_code)
+        if exit_code == 0 and vim.fn.filereadable(compilation_output) == 1 then
+            vim.cmd("split | term " .. string.format(cmd.template.exec, compilation_output))
+            if not cmd.save_output then
+                Autocmd {
+                    events = {"BufWipeout", "BufUnload"},
+                    opts = {
+                        buffer = vim.api.nvim_get_current_buf(),
+                        callback = function()
+                            local outputdir = vim.fn.fnamemodify(fullpath, ':h')
+                            os.remove(outputdir .. '/' .. compilation_output)
+                        end,
+                    },
+                }
+            end
+        else
+            vim.notify("Compilation failed: " .. compile_cmd)
+        end
+    end
+
+    vim.fn.jobstart(compile_cmd, {on_exit = post_compilation})
 end
 
 local function runscript(rootdir, name)
     local script = rootdir .. "/" .. name .. script_extension
     local s = ":split | term %s"
     vim.cmd(string.format(s, script))
-end
-
-local function gitpush(rootdir)
-    runscript(rootdir, "git")
 end
 
 local function runproject(rootdir)
@@ -63,7 +61,15 @@ local function runcmd(cmd)
         opts = {
             pattern = cmd.filetype,
             callback = function()
-                SetKeymap("n", cmd.keysequence, function() runningmethod(cmd) end, {buffer = true})
+                local run
+                if cmd.custom then
+                    run = cmd.custom
+                else
+                    run = function()
+                        runningmethod(cmd)
+                    end
+                end
+                SetKeymap("n", cmd.keysequence, run, {buffer = true})
             end
         }
     }
@@ -71,12 +77,15 @@ end
 
 local function git()
     local root = require('utils.dir').root()
+    local commit = vim.fn.input("Commit message: ")
+    local gitcmd = "git add . | git commit -m \"%s\" | git push origin main"
     if root then
-        gitpush(root)
+        vim.cmd(":split | term " .. string.format(gitcmd, commit))
     else
         vim.notify('No .git found!')
     end
 end
+
 SetKeymap("n", "<leader>git", git, "Push to Git Repo")
 
 runcmd {
@@ -122,8 +131,7 @@ runcmd {
 runcmd {
     filetype = "dart",
     keysequence = "<leader>run",
-    compiled = false,
-    template = {
-        exec = "dart %s"
-    }
+    custom = function()
+        vim.cmd(":split | term dart run")
+    end
 }

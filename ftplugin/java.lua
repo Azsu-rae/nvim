@@ -1,10 +1,16 @@
 
+local dir = require("utils.dir")
+local rootdir
+if not dir.module() then
+    rootdir = nil
+else
+    rootdir = dir.root()
+end
+
 vim.api.nvim_set_hl(0, "@lsp.type.modifier.java", {link = "Keyword"})
 vim.api.nvim_set_hl(0, "@lsp.type.namespace.java", {link = "@variable"})
 
 -- get the project root
-local dir = require("utils.dir")
-local rootdir = dir.root()
 
 -- eclipse.jdt.ls's .jar file launch command
 local function getLaunchCmd()
@@ -28,7 +34,12 @@ local function getLaunchCmd()
     local configpath = vim.fn.stdpath('data') .. '/mason/packages/jdtls/' .. configfile[OS]
 
     -- for each project, jdtls creates a workspace where it stores it's data
-    local projectname = vim.fn.fnamemodify(rootdir, ":p:h:t")
+    local projectname
+    if rootdir then
+        projectname = vim.fn.fnamemodify(rootdir, ":p:h:t")
+    else
+        projectname = vim.fn.expand('%:p:t:r')
+    end
     local workspacefolder = vim.fn.stdpath('data') .. "/site/java/workspace/" .. projectname
 
     return {
@@ -56,7 +67,7 @@ end
 local java_debug_dir = "/mason/packages/java-debug-adapter/extension/server"
 local java_debug = "/com.microsoft.java.debug.plugin-*.jar"
 local java_debug_path = vim.fn.glob(vim.fn.stdpath('data') .. java_debug_dir .. java_debug)
-local debugger_present = vim.fn.empty(java_debug_path) == 0
+local debugger_present = vim.fn.empty(java_debug_path) == 0 and rootdir
 
 local init_options = {}
 if debugger_present then
@@ -81,7 +92,11 @@ local on_attach = function(_, _)
     end
 
     -- Setting the directory to the project root
-    vim.cmd.cd(rootdir)
+    if rootdir then
+        vim.cmd.cd(rootdir)
+    else
+        vim.cmd.cd(vim.fn.expand('%:p:h'))
+    end
 end
 
 local cmd = getLaunchCmd()
