@@ -76,9 +76,10 @@ SetKeymap("n", "<leader>e", require('nvim-tree.api').tree.toggle, "Toggle NvimTr
 ------------------------------ TELESCOPE ------------------------------
 
 local telescope_builtin = require("telescope.builtin")
+local themes = require('telescope.themes')
 
-SetKeymap("n", "<leader>ff", telescope_builtin.find_files, "[F]ind [F]iles")
-SetKeymap("n", "<leader>fg", telescope_builtin.live_grep, "[F]ind by [G]rep")
+SetKeymap("n", "<leader>ff", function() telescope_builtin.find_files(themes.get_ivy()) end, "[F]ind [F]iles")
+SetKeymap("n", "<leader>fg", function() telescope_builtin.live_grep(themes.get_ivy()) end, "[F]ind by [G]rep")
 SetKeymap("n", "<leader>fd", telescope_builtin.diagnostics, "[F]ind [D]iagnostics")
 SetKeymap("n", "<leader>fr", telescope_builtin.resume, "[F]inder [R]esume")
 SetKeymap("n", "<leader>f.", telescope_builtin.oldfiles, '[F]ind Recent Files ("." for repeat)')
