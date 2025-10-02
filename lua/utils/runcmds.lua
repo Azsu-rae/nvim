@@ -61,11 +61,13 @@ local function runcmd(cmd)
         opts = {
             pattern = cmd.filetype,
             callback = function()
+                vim.notify("the autocmd is being created")
                 local run
                 if cmd.custom then
                     run = cmd.custom
                 else
                     run = function()
+                        vim.notify("We getting here")
                         runningmethod(cmd)
                     end
                 end
@@ -77,9 +79,9 @@ end
 
 local function git()
     local root = require('utils.dir').root()
-    local commit = vim.fn.input("Commit message: ")
-    local gitcmd = "git add . | git commit -m \"%s\" | git push origin main"
     if root then
+        local commit = vim.fn.input("Commit message: ")
+        local gitcmd = "git add . | git commit -m \"%s\" | git push origin main"
         vim.cmd(":split | term " .. string.format(gitcmd, commit))
     else
         vim.notify('No .git found!')
@@ -116,6 +118,15 @@ runcmd {
     compiled = false,
     template = {
         exec = "lua %s"
+    }
+}
+
+runcmd {
+    filetype = "python",
+    keysequence = "<leader>run",
+    compiled = false,
+    template = {
+        exec = "python %s"
     }
 }
 
