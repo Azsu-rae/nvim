@@ -5,7 +5,6 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require('lspconfig')
 
 if Installed.SDK.flutter then
-    print('are we doint this?')
     lspconfig.dartls.setup {
         capabilities = capabilities,
     }
@@ -18,7 +17,7 @@ local setup_server = function(server_name)
 end
 
 local mason_lspconfig = {
-     ensure_installed = {"lua_ls", "clangd", "jdtls"},
+     ensure_installed = {"lua_ls", "clangd", "jdtls", "pyright"},
      handlers = {setup_server},
      automatic_enable = {
          exclude = {

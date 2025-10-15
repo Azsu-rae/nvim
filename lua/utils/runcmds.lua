@@ -61,13 +61,11 @@ local function runcmd(cmd)
         opts = {
             pattern = cmd.filetype,
             callback = function()
-                vim.notify("the autocmd is being created")
                 local run
                 if cmd.custom then
                     run = cmd.custom
                 else
                     run = function()
-                        vim.notify("We getting here")
                         runningmethod(cmd)
                     end
                 end
