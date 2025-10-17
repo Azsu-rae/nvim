@@ -31,6 +31,10 @@ Install ripgrep:
 ```bash
 winget install --id BurntSushi.ripgrep.MSVC -e --source winget
 ```
+Install Node.js (for python's pyright):
+```bash
+winget install OpenJS.NodeJS
+```
 
 ---
 
