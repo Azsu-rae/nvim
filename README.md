@@ -15,12 +15,12 @@
 
 ### 1. Core Tools Installation
 
+Install Microsoft Visual Studio (not VSCode)
+
 Install Neovim:
 ```bash
 winget install Neovim.Neovim
 ```
-
-Install Microsoft Visual Studio (not VSCode)
 
 Install Git:
 ```bash
