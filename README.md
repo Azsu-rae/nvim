@@ -64,7 +64,7 @@ pacman -S --needed base-devel mingw-w64-x86_64-gcc
 
 This installs:
 - **GCC** for 64-bit development in `C:\msys64\mingw64\bin` (add to your Path)
-- **base-devel group** including `make` in `C:\msys64\usr\bin` (add to your Path)
+- **base-devel group** including `make` in `C:\msys64\usr\bin`
 
 ---
 
