@@ -81,13 +81,9 @@ After launching Neovim, run:
 
 Edit the project path as needed.
 
-Navigate to:
-```
-C:\Users\aitam\AppData\Local\nvim-data\site\pack\packer\start\telescope-fzf-native.nvim
-```
-
 Open the mingw64 shell and run:
 ```bash
+cd /c/Users/<USERNAME>/AppData/Local/nvim-data/site/pack/packer/start/telescope-fzf-native.nvim
 make
 ```
 
