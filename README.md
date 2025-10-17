@@ -96,5 +96,5 @@ make
 ## Environment Variables Summary
 
 Add the following directories to your Windows `Path` environment variable:
-- `C:\msys64`
-- `C:\msys64\mingw64\bin`
+- `C:\msys64` (for the shells)
+- `C:\msys64\mingw64\bin` (for gcc & g++)
