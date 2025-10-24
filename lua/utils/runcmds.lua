@@ -1,4 +1,8 @@
 
+local verbose = false
+
+-- TODO add single file runs even in repos with .git
+
 local windows = OS:match("Windows")
 local binary_extention = windows and ".exe" or ".out"
 local script_extension = windows and ".ps1" or ".sh"
@@ -7,7 +11,9 @@ local function runfile(cmd)
 
     local fullpath = vim.fn.expand("%:p")
     if not cmd.compiled then
-        vim.cmd("split | term " .. string.format(cmd.template.exec, fullpath))
+        local formatted = "split | term " .. string.format(cmd.template.exec, fullpath)
+        if verbose then vim.notify(formatted) end
+        vim.cmd(formatted)
         return
     end
 
@@ -78,7 +84,9 @@ end
 local function git()
     local root = require('utils.dir').root()
     if root then
+        -- TODO check for empty input
         local commit = vim.fn.input("Commit message: ")
+        -- TODO add master branch support
         local gitcmd = "git add . | git commit -m \"%s\" | git push origin main"
         vim.cmd(":split | term " .. string.format(gitcmd, commit))
     else

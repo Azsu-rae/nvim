@@ -6,7 +6,7 @@ Colorscheme = "rebelot/kanagawa.nvim"
 OS = vim.uv.os_uname().sysname
 Installed = {
     SDK = {
-        flutter = true,
+        flutter = false,
     },
 }
 

@@ -2,18 +2,12 @@
 local M = {}
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-local lspconfig = require('lspconfig')
-
-if Installed.SDK.flutter then
-    lspconfig.dartls.setup {
-        capabilities = capabilities,
-    }
-end
+vim.lsp.config("*", {
+    capabilities = capabilities,
+})
 
 local setup_server = function(server_name)
-    lspconfig[server_name].setup {
-        capabilities = capabilities,
-    }
+    vim.lsp.enable(server_name)
 end
 
 local mason_lspconfig = {
