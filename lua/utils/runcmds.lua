@@ -68,12 +68,10 @@ local function runcmd(cmd)
             pattern = cmd.filetype,
             callback = function()
                 local run
-                if cmd.custom then
-                    run = cmd.custom
+                if cmd.singlefile then
+                    run = function() runfile(cmd) end
                 else
-                    run = function()
-                        runningmethod(cmd)
-                    end
+                    run = function() runningmethod(cmd) end
                 end
                 SetKeymap("n", cmd.keysequence, run, {buffer = true})
             end
@@ -132,7 +130,17 @@ runcmd {
     keysequence = "<leader>run",
     compiled = false,
     template = {
-        exec = "python %s"
+        exec = "py %s"
+    }
+}
+
+runcmd {
+    filetype = "python",
+    keysequence = "<leader>rf",
+    compiled = false,
+    singlefile = true,
+    template = {
+        exec = "py %s"
     }
 }
 
@@ -143,12 +151,4 @@ runcmd {
     template = {
         exec = "java %s"
     }
-}
-
-runcmd {
-    filetype = "dart",
-    keysequence = "<leader>run",
-    custom = function()
-        vim.cmd(":split | term dart run")
-    end
 }
