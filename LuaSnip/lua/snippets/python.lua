@@ -48,3 +48,20 @@ local img = fmt(head, {
 ls.add_snippets("python", {
     s("dhead", img)
 })
+
+local read = [[
+    {} = cv2.imread("{{}}/{}.{}".format(imgpath))
+    if {} is None:
+        raise ValueError("No image!")
+]]
+
+local cvread = fmt(read, {
+    i(1, "img"),
+    i(2, "IMAGE_NAME"),
+    i(3, "EXT"),
+    rep(1),
+})
+
+ls.add_snippets("python", {
+    s("cvread", cvread)
+})
