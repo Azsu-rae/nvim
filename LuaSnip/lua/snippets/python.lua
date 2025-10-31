@@ -29,24 +29,24 @@ if {} is None:
 
 ]]
 
-local dimg = fmt(dhead, {
+local dheadfmt = fmt(dhead, {
     i(1, "img"),
     i(2, "IMAGE_NAME.EXT"),
     rep(1),
 })
 
 ls.add_snippets("python", {
-    s("dhead", dimg)
+    s("dhead", dheadfmt)
 })
 
-local img = fmt(head, {
+local headfmt = fmt(head, {
     i(1, "img"),
     i(2, "IMAGE_NAME.EXT"),
     rep(1),
 })
 
 ls.add_snippets("python", {
-    s("dhead", img)
+    s("dhead", headfmt)
 })
 
 local read = [[

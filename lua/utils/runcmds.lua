@@ -45,6 +45,7 @@ end
 local function runscript(rootdir, name)
     local script = rootdir .. "/" .. name .. script_extension
     local s = ":split | term %s"
+    vim.notify(string.format(s, script))
     vim.cmd(string.format(s, script))
 end
 
@@ -55,6 +56,7 @@ end
 local function runningmethod(cmd)
     local module = require('utils.dir').module()
     if module then
+        print(module)
         runproject(module)
     else
         runfile(cmd)

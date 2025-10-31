@@ -1,7 +1,7 @@
 
 local M = {}
 
-local markers = {'.git', 'pom.xml', 'pubspec.yaml'}
+local markers = {'.git', 'pom.xml', 'pubspec.yaml', 'pyproject.toml'}
 
 local function getMarkerDir(path)
 

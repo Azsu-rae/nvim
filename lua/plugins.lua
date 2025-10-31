@@ -168,6 +168,12 @@ local function plugins(use)
 
     -- directly configures Neovim's LSP Client with eclipse.jdt.ls
     use "mfussenegger/nvim-jdtls"
+
+    -- filetype plugin for LaTeX files
+    use "lervag/vimtex"
+
+    -- better spell checking
+--    use "barreiroleo/ltex-extra.nvim"
 end
 
 M.setup = function()
