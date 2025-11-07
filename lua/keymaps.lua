@@ -34,14 +34,8 @@ SetKeymap("n", "<leader>git", function ()
     end
 
     local commit = vim.fn.input("Commit message: ")
-
-    if not commit then
-        vim.notify('Commmit Aborted!')
-        return
-    end
-
     if commit == "" then
-        vim.notify('Enter a commit message!')
+       vim.notify('Commit aborted!')
         return
     end
 
