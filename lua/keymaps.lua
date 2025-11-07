@@ -30,6 +30,7 @@ SetKeymap("n", "<leader>git", function ()
     local root = require('utils.dir').root()
     if not root then
         vim.notify('No .git found!')
+        return
     end
 
     local commit = vim.fn.input("Commit message: ")
