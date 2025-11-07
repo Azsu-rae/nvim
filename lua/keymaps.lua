@@ -10,16 +10,38 @@ function SetKeymap(mode, key, map, opts)
 end
 
 -- In insert mode, make <BS> delete all indent on an "empty" line
-vim.keymap.set("i", "<BS>", function()
-  local col = vim.fn.col(".")
-  local line = string.sub(vim.fn.getline("."), 1, col - 1)
+SetKeymap("i", "<BS>", function()
 
-  if line:match("^%s*$") and col > 1 then
-    return "<C-u>"  -- delete everything before the cursor on this line
-  else
-    return "<BS>"   -- normal backspace
-  end
-end, { expr = true, noremap = true })
+    local col = vim.fn.col(".")
+    local line = string.sub(vim.fn.getline("."), 1, col - 1)
+
+    if line:match("^%s*$") and col > 1 then
+        return "<C-u>"  -- delete everything before the cursor on this line
+    else
+        return "<BS>"   -- normal backspace
+    end
+end, {
+    expr = true,
+    noremap=true
+})
+
+SetKeymap("n", "<leader>git", function ()
+
+    local root = require('utils.dir').root()
+    if not root then
+        vim.notify('No .git found!')
+    end
+
+    local commit = vim.fn.input("Commit message: ")
+    if commit == "" then
+        vim.notify('Enter a commit message!')
+        return
+    end
+
+    local gitcmd = "git add . | git commit -m \"%s\" | git push origin main"
+    vim.cmd(":split | term " .. string.format(gitcmd, commit))
+
+end, "Push to Git Repo")
 
 ------------------------------ GENERAL SETTINGS ------------------------------
 

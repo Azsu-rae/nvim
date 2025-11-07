@@ -81,20 +81,6 @@ local function runcmd(cmd)
     }
 end
 
-local function git()
-    local root = require('utils.dir').root()
-    if root then
-        -- TODO check for empty input
-        local commit = vim.fn.input("Commit message: ")
-        -- TODO add master branch support
-        local gitcmd = "git add . | git commit -m \"%s\" | git push origin main"
-        vim.cmd(":split | term " .. string.format(gitcmd, commit))
-    else
-        vim.notify('No .git found!')
-    end
-end
-
-SetKeymap("n", "<leader>git", git, "Push to Git Repo")
 
 runcmd {
     filetype = "c",
