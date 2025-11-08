@@ -21,9 +21,9 @@ local function plugins(use)
 
     -- colorscheme
     use {
-        Colorscheme,
+        "vague-theme/vague.nvim",
         config = function()
-            vim.cmd.colorscheme(vim.fn.fnamemodify(Colorscheme, ':t:r'))
+            vim.cmd.colorscheme("vague")
         end
     }
 

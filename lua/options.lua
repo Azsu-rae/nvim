@@ -7,12 +7,10 @@
 -- Make 'yank' and 'paste' use the system clipboard
 vim.schedule(function() vim.opt.clipboard = "unnamedplus" end)
 
-if OS:match("Windows") then
-    vim.opt.shell = "powershell"
-    vim.opt.shellcmdflag = "-NoLogo -ExecutionPolicy RemoteSigned -Command"
-    vim.opt.shellquote = ""
-    vim.opt.shellxquote = ""
-end
+vim.opt.shell = "powershell"
+vim.opt.shellcmdflag = "-NoLogo -ExecutionPolicy RemoteSigned -Command"
+vim.opt.shellquote = ""
+vim.opt.shellxquote = ""
 
 -- Line numbers
 vim.opt.number = true -- Enable line numbers

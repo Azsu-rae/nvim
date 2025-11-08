@@ -1,16 +1,8 @@
 
 -- [[ Set up keymaps ]] See `:h vim.keymap.set()`, `:h mapping`, `:h keycodes`
 
-function SetKeymap(mode, key, map, opts)
-    if type(opts) == "table" then
-        vim.keymap.set(mode, key, map, opts)
-    elseif type(opts) == "string" then
-        vim.keymap.set(mode, key, map, {desc=opts, silent=false})
-    end
-end
-
 -- In insert mode, make <BS> delete all indent on an "empty" line
-SetKeymap("i", "<BS>", function()
+vim.keymap.set("i", "<BS>", function()
 
     local col = vim.fn.col(".")
     local line = string.sub(vim.fn.getline("."), 1, col - 1)
@@ -25,7 +17,7 @@ end, {
     noremap=true
 })
 
-SetKeymap("n", "<leader>git", function ()
+vim.keymap.set("n", "<leader>git", function ()
 
     local root = require('utils.dir').root()
     if not root then
@@ -36,57 +28,50 @@ SetKeymap("n", "<leader>git", function ()
     local commit = vim.fn.input("Commit message: ")
     if commit == "" then
        vim.notify('Commit aborted!')
-        return
+       return
     end
 
     local gitcmd = "git add . | git commit -m \"%s\" | git push origin main"
     vim.cmd(":split | term " .. string.format(gitcmd, commit))
 
-end, "Push to Git Repo")
+end)
 
 ------------------------------ GENERAL SETTINGS ------------------------------
 
-SetKeymap("n", "<Esc>", "<cmd>nohlsearch<CR>", "Remove search highlights")
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
-SetKeymap("n", "<leader>t", "<cmd>term<CR>", "Enter terminal mode")
-SetKeymap("t", "<Esc><Esc>", "<C-\\><C-n><cmd>bd!<CR>", "Exit terminal mode")
-SetKeymap("t", "<leader><Esc>", "<C-\\><C-n>", "Enter normal mode in terminal mode")
+vim.keymap.set("n", "<leader>t", "<cmd>term<CR>")
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n><cmd>bd!<CR>")
+vim.keymap.set("t", "<leader><Esc>", "<C-\\><C-n>")
 
-SetKeymap({'t', 'i'}, '<A-h>', '<C-\\><C-n><C-w>h', "Move focus to the left window")
-SetKeymap({'t', 'i'}, '<A-j>', '<C-\\><C-n><C-w>j', "Move focus to the right window")
-SetKeymap({'t', 'i'}, '<A-k>', '<C-\\><C-n><C-w>k', "Move focus to the lower window")
-SetKeymap({'t', 'i'}, '<A-l>', '<C-\\><C-n><C-w>l', "Move focus to the upper window")
+vim.keymap.set({'t', 'i'}, '<A-h>', '<C-\\><C-n><C-w>h')
+vim.keymap.set({'t', 'i'}, '<A-j>', '<C-\\><C-n><C-w>j')
+vim.keymap.set({'t', 'i'}, '<A-k>', '<C-\\><C-n><C-w>k')
+vim.keymap.set({'t', 'i'}, '<A-l>', '<C-\\><C-n><C-w>l')
 
-SetKeymap('n', '<A-h>', '<C-w>h', "Move focus to the left window")
-SetKeymap('n', '<A-j>', '<C-w>j', "Move focus to the right window")
-SetKeymap('n', '<A-k>', '<C-w>k', "Move focus to the lower window")
-SetKeymap('n', '<A-l>', '<C-w>l', "Move focus to the upper window")
+vim.keymap.set('n', '<A-h>', '<C-w>h')
+vim.keymap.set('n', '<A-j>', '<C-w>j')
+vim.keymap.set('n', '<A-k>', '<C-w>k')
+vim.keymap.set('n', '<A-l>', '<C-w>l')
 
-SetKeymap("n", "<leader>wv", "<cmd>vsplit<cr>", "[W]indow Split [V]ertical")
-SetKeymap("n", "<leader>wh", "<cmd>split<cr>", "[W]indow Split [H]orizontal")
+vim.keymap.set("n", "<leader>wv", "<cmd>vsplit<cr>")
+vim.keymap.set("n", "<leader>wh", "<cmd>split<cr>")
 
 -- gv is for reselecting the last visual selection
-SetKeymap("v", "<", "<gv", "Indent left in visual mode")
-SetKeymap("v", ">", ">gv", "Indent right in visual mode")
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
 
-SetKeymap("n", "<leader>i", "<cmd>Inspect<CR>", "[I]nspect What's Under the Cursor")
+vim.keymap.set("n", "<leader>i", "<cmd>Inspect<CR>")
+vim.keymap.set("n", "<leader>wrp", function () vim.opt.wrap = not vim.opt.wrap:get() end)
+vim.keymap.set("n", "<leader>s", function() require('packer').sync() end)
 
-SetKeymap("n", "<leader>wrp", function () vim.opt.wrap = not vim.opt.wrap:get() end, "Toggle line [W]rapping")
+local function diagfloat() return vim.diagnostic.open_float() end
+vim.keymap.set("n", "<leader>odf", diagfloat)
 
-local function diagfloat()
-    return vim.diagnostic.open_float()
-end
-SetKeymap("n", "<leader>odf", function() diagfloat() end, "[O]pen [D]iagnostic [F]loat")
-
-local function focus_diagnostic_float()
+vim.keymap.set("n", "<leader>fdf", function ()
     local _, float_win = diagfloat()
-    if float_win then
-        vim.api.nvim_set_current_win(float_win) -- force focus
-    end
-end
-SetKeymap("n", "<leader>fdf", focus_diagnostic_float, "[F]ocus [D]iagnostic [F]loat")
-
-SetKeymap("n", "<leader>s", function() require('packer').sync() end, "[S]ync Packer")
+    if float_win then vim.api.nvim_set_current_win(float_win) end
+end)
 
 if Bootstrap then
     return
@@ -94,57 +79,44 @@ end
 
 ------------------------------ NVIM TREE ------------------------------
 
-SetKeymap("n", "<leader>e", require('nvim-tree.api').tree.toggle, "Toggle NvimTree")
+vim.keymap.set("n", "<leader>e", require('nvim-tree.api').tree.toggle)
 
 ------------------------------ TELESCOPE ------------------------------
 
 local telescope_builtin = require("telescope.builtin")
 local themes = require('telescope.themes')
 
-SetKeymap("n", "<leader>ff", function() telescope_builtin.find_files(themes.get_ivy()) end, "[F]ind [F]iles")
-SetKeymap("n", "<leader>fg", function() telescope_builtin.live_grep(themes.get_ivy()) end, "[F]ind by [G]rep")
-SetKeymap("n", "<leader>fd", telescope_builtin.diagnostics, "[F]ind [D]iagnostics")
-SetKeymap("n", "<leader>fr", telescope_builtin.resume, "[F]inder [R]esume")
-SetKeymap("n", "<leader>f.", telescope_builtin.oldfiles, '[F]ind Recent Files ("." for repeat)')
-SetKeymap("n", "<leader>fb", telescope_builtin.buffers, "[F]ind Existing [B]uffers")
-
-local edit_config_file = function()
-    vim.cmd.cd(vim.fn.stdpath("config"))
-    telescope_builtin.find_files()
-end
-SetKeymap("n", "<leader>cf", edit_config_file, "Edit Neovim [C]onfig [F]iles")
+vim.keymap.set("n", "<leader>ff", function() telescope_builtin.find_files(themes.get_ivy()) end)
+vim.keymap.set("n", "<leader>fg", function() telescope_builtin.live_grep(themes.get_ivy()) end)
+vim.keymap.set("n", "<leader>fd", telescope_builtin.diagnostics)
+vim.keymap.set("n", "<leader>fr", telescope_builtin.resume)
+vim.keymap.set("n", "<leader>f.", telescope_builtin.oldfiles)
+vim.keymap.set("n", "<leader>fb", telescope_builtin.buffers)
 
 ------------------------------ LSP ------------------------------
 
-SetKeymap("n", "<leader>cr", telescope_builtin.lsp_references, "[C]ode Goto [R]eferences")
-SetKeymap("n", "<leader>ci", telescope_builtin.lsp_implementations,"[C]ode Goto [I]mplementations")
-SetKeymap("n", "<leader>ch", vim.lsp.buf.hover, "[C]ode [H]over Documentation")
-SetKeymap("n", "<leader>cd", vim.lsp.buf.definition, "[C]ode Goto [D]efinition")
-SetKeymap("n", "<leader>cD", vim.lsp.buf.declaration, "[C]ode Goto [D]eclaration")
-SetKeymap("n", "<leader>cR", vim.lsp.buf.rename, "[C]ode [R]ename")
-SetKeymap({"n", "v"}, "<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ctions")
+vim.keymap.set("n", "<leader>cr", telescope_builtin.lsp_references)
+vim.keymap.set("n", "<leader>ci", telescope_builtin.lsp_implementations)
+vim.keymap.set("n", "<leader>ch", vim.lsp.buf.hover)
+vim.keymap.set("n", "<leader>cd", vim.lsp.buf.definition)
+vim.keymap.set("n", "<leader>cD", vim.lsp.buf.declaration)
+vim.keymap.set("n", "<leader>cR", vim.lsp.buf.rename)
+vim.keymap.set({"n", "v"}, "<leader>ca", vim.lsp.buf.code_action)
 
 ------------------------------ DAP ------------------------------
 
 local dap = require("dap")
 
 -- Keymaps
-SetKeymap("n", "<leader>dc", dap.continue, "DAP Continue")
-SetKeymap("n", "<leader>dov", dap.step_over, "DAP Step Over")
-SetKeymap("n", "<leader>dou", dap.step_out, "DAP Step Out")
-SetKeymap("n", "<leader>dsi", dap.step_into, "DAP Step Into")
-SetKeymap("n", "<leader>db", dap.toggle_breakpoint, "DAP Toggle Breakpoint")
+vim.keymap.set("n", "<leader>dc", dap.continue)
+vim.keymap.set("n", "<leader>dov", dap.step_over)
+vim.keymap.set("n", "<leader>dou", dap.step_out)
+vim.keymap.set("n", "<leader>dsi", dap.step_into)
+vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint)
 
-local function setbp()
-    dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
-end
-SetKeymap("n", "<leader>dB", setbp, "DAP Conditional Breakpoint")
+vim.keymap.set("n", "<leader>dB", function() dap.set_breakpoint(vim.fn.input("Breakpoint condition: ")) end)
+vim.keymap.set("n", "<leader>dl", function() dap.set_breakpoint(nil, nil, vim.fn.input("Log point message: ")) end)
 
-local function log()
-    dap.set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
-end
-SetKeymap("n", "<leader>dl", log, "DAP Log Point")
-
-SetKeymap("n", "<leader>dr", dap.repl.open, "DAP REPL")
-SetKeymap("n", "<leader>dl", dap.run_last, "DAP Run Last")
-SetKeymap("n", "<leader>dq", dap.terminate, "DAP Terminate")
+vim.keymap.set("n", "<leader>dr", dap.repl.open)
+vim.keymap.set("n", "<leader>dl", dap.run_last)
+vim.keymap.set("n", "<leader>dq", dap.terminate)

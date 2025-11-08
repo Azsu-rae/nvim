@@ -1,4 +1,15 @@
 
+local cmd = {
+    compiled = false,
+    template = {
+        exec = "java %s"
+    }
+}
+
+vim.keymap.set('n', '<leader>run', function() require('utils.runcmds').run(cmd) end, {
+    buffer = true
+})
+
 local dir = require("utils.dir")
 local rootdir
 if not dir.module() then

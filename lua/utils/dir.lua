@@ -3,7 +3,8 @@ local M = {}
 
 local markers = {'.git', 'pom.xml', 'pubspec.yaml', 'pyproject.toml'}
 
-local function getMarkerDir(path)
+-- looks for root markers and returns the directory of the first one it finds
+M.module = function (path)
 
     if not path then
         path = vim.fn.expand("%:p:h")
@@ -11,7 +12,7 @@ local function getMarkerDir(path)
 
     local found = vim.fs.find(markers, {
         upward = true,
-        path =path,
+        path = path,
     })
 
     if #found == 0 then
@@ -23,19 +24,18 @@ end
 
 M.root = function()
 
-    local markerdir = getMarkerDir()
-    if markerdir then
-        local projectroot = getMarkerDir(vim.fn.fnamemodify(markerdir, ':h'))
-        if projectroot then
-            markerdir = projectroot
-        end
-    else
-        markerdir = vim.fn.getcwd()
+    local markerdir = M.module()
+    if not markerdir then
+        return vim.fn.getcwd()
+    end
+
+    -- looks one level above to ensure we are at the root not at a module
+    local projectroot = M.module(vim.fn.fnamemodify(markerdir, ':h'))
+    if projectroot then
+        markerdir = projectroot
     end
 
     return markerdir
 end
-
-M.module = getMarkerDir
 
 return M
