@@ -1,12 +1,12 @@
 
-local cmd = {
+local runcmd = {
     compiled = false,
     template = {
         exec = "java %s"
     }
 }
 
-vim.keymap.set('n', '<leader>run', function() require('utils.runcmds').run(cmd) end, {
+vim.keymap.set('n', '<leader>run', function() require('utils.runcmds').run(runcmd) end, {
     buffer = true
 })
 
@@ -37,12 +37,7 @@ local function getLaunchCmd()
     end
 
     -- OS-specific configuration files needed by the server
-    local configfile = {
-        Windows_NT="config_win",
-        Linux="config_linux",
-        Darwin="config_mac",
-    }
-    local configpath = vim.fn.stdpath('data') .. '/mason/packages/jdtls/' .. configfile[OS]
+    local configpath = vim.fn.stdpath('data') .. '/mason/packages/jdtls/config_win'
 
     -- for each project, jdtls creates a workspace where it stores it's data
     local projectname
