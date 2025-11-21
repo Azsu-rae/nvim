@@ -32,9 +32,9 @@ local diagnostic_config = {
 }
 
 M.setup = function()
-    require("mason").setup() -- setup mason with default properties
-    require("mason-lspconfig").setup(mason_lspconfig)
-    vim.diagnostic.config(diagnostic_config)
+   require("mason").setup() -- setup mason with default properties
+   require("mason-lspconfig").setup(mason_lspconfig)
+   vim.diagnostic.config(diagnostic_config)
 end
 
 return M

@@ -1,7 +1,7 @@
 
 -- constants --
 
-PROJECTS_DIR = "C:\\Users\\aitam\\Projects"
+PROJECTS_DIR = "C:\\Users\\a50055268\\Projects"
 
 -- vimscript global variables --
 
@@ -21,11 +21,15 @@ vim.g.have_nerd_font = true
 -- configuration --
 
 -- plugins setup
+package.loaded["plugins"] = nil
 require('plugins').setup()
 
 -- neovim editor options
+package.loaded["options"] = nil
 require 'options'
 
 -- keymaps and autocmds
+package.loaded["keymaps"] = nil
+package.loaded["autocmds"] = nil
 require 'keymaps'
 require 'autocmds'

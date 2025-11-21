@@ -1,4 +1,11 @@
 
+vim.keymap.set('n', '<leader>csl', '<cmd>split | term ipython<cr>')
+
+vim.o.foldmethod = "expr"   -- or "syntax"
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+vim.o.foldlevel = 99          -- keep folds open by default
+vim.o.foldenable = true       -- enable folding
+
 local runcmds = require('utils.runcmds')
 local cmd = {
     compiled = false,

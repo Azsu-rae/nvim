@@ -39,9 +39,9 @@ end)
 ------------------------------ GENERAL SETTINGS ------------------------------
 
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+vim.keymap.set("n", "<leader>src", "<cmd>:source $MYVIMRC<cr>")
 
 vim.keymap.set("n", "<leader>t", "<cmd>term<CR>")
-vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n><cmd>bd!<CR>")
 vim.keymap.set("t", "<leader><Esc>", "<C-\\><C-n>")
 
 vim.keymap.set({'t', 'i'}, '<A-h>', '<C-\\><C-n><C-w>h')
@@ -63,7 +63,7 @@ vim.keymap.set("v", ">", ">gv")
 
 vim.keymap.set("n", "<leader>i", "<cmd>Inspect<CR>")
 vim.keymap.set("n", "<leader>wrp", function () vim.opt.wrap = not vim.opt.wrap:get() end)
-vim.keymap.set("n", "<leader>s", function() require('packer').sync() end)
+vim.keymap.set("n", "<leader>syn", function() require('packer').sync() end)
 
 local function diagfloat() return vim.diagnostic.open_float() end
 vim.keymap.set("n", "<leader>odf", diagfloat)

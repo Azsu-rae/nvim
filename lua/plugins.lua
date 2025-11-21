@@ -164,6 +164,14 @@ local function plugins(use)
         end,
     }
 
+    -- Interactive Repl Over Neovim
+    use {
+        "Vigemus/iron.nvim",
+        config = function ()
+            require('plugins.util.iron')
+        end
+    }
+
     -- Language specific plugins --
 
     -- directly configures Neovim's LSP Client with eclipse.jdt.ls
