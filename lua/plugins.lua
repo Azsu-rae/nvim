@@ -21,10 +21,33 @@ local function plugins(use)
 
     -- colorscheme
     use {
-        "vague-theme/vague.nvim",
+        "fcpg/vim-fahrenheit",
         config = function()
-            vim.cmd.colorscheme("vague")
-        end
+            vim.cmd.colorscheme("fahrenheit")
+        end,
+        run = function()
+
+            -- neovim colorscheme background in haxadecimal
+            local hl = vim.api.nvim_get_hl(0, { name = "Normal" })
+            local bg = string.format("#%06x", hl.bg)
+
+            local path = "C:\\Users\\a50055268\\AppData\\Local\\Packages\\Microsoft.WindowsTerminal_8wekyb3d8bbwe\\LocalState\\settings.json"
+            local file = vim.fn.readfile(path)
+            local json_str = table.concat(file, "\n")
+            local term_config = vim.fn.json_decode(json_str)
+            local current_colorscheme = term_config.profiles.defaults.colorScheme
+            for i, scheme in ipairs(term_config.schemes) do
+                if scheme.name == current_colorscheme then
+                    print(term_config.schemes[i].background)
+                    print(bg)
+                    term_config.schemes[i].background = bg
+                    print(term_config.schemes[i].background)
+                    print(bg)
+                end
+            end
+            local newjson = vim.fn.json_encode(term_config)
+            vim.fn.writefile(vim.split(newjson, "\n"), path)
+        end,
     }
 
     -- file tree
