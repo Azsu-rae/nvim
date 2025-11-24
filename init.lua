@@ -1,7 +1,10 @@
 
--- constants --
-
 PROJECTS_DIR = "C:\\Users\\a50055268\\Projects"
+Colorschemes = {
+    {"rose-pine/neovim", "rose-pine"},
+    {"uhs-robert/oasis.nvim", "oasis"},
+}
+vim.cmd.colorscheme(vim.fn.readfile(vim.fn.stdpath('config') .. '/scheme.txt')[1])
 
 -- vimscript global variables --
 
@@ -33,3 +36,6 @@ package.loaded["keymaps"] = nil
 package.loaded["autocmds"] = nil
 require 'keymaps'
 require 'autocmds'
+
+package.loaded['specs'] = nil
+require 'specs'

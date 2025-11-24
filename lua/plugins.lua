@@ -20,35 +20,9 @@ local function plugins(use)
     -- Text Editing: colorscheme, file tree, status line, file picker, syntax highlighting --
 
     -- colorscheme
-    use {
-        "fcpg/vim-fahrenheit",
-        config = function()
-            vim.cmd.colorscheme("fahrenheit")
-        end,
-        run = function()
-
-            -- neovim colorscheme background in haxadecimal
-            local hl = vim.api.nvim_get_hl(0, { name = "Normal" })
-            local bg = string.format("#%06x", hl.bg)
-
-            local path = "C:\\Users\\a50055268\\AppData\\Local\\Packages\\Microsoft.WindowsTerminal_8wekyb3d8bbwe\\LocalState\\settings.json"
-            local file = vim.fn.readfile(path)
-            local json_str = table.concat(file, "\n")
-            local term_config = vim.fn.json_decode(json_str)
-            local current_colorscheme = term_config.profiles.defaults.colorScheme
-            for i, scheme in ipairs(term_config.schemes) do
-                if scheme.name == current_colorscheme then
-                    print(term_config.schemes[i].background)
-                    print(bg)
-                    term_config.schemes[i].background = bg
-                    print(term_config.schemes[i].background)
-                    print(bg)
-                end
-            end
-            local newjson = vim.fn.json_encode(term_config)
-            vim.fn.writefile(vim.split(newjson, "\n"), path)
-        end,
-    }
+    for _, colorscheme in ipairs(Colorschemes) do
+        use(colorscheme[1])
+    end
 
     -- file tree
     use {
@@ -188,12 +162,12 @@ local function plugins(use)
     }
 
     -- Interactive Repl Over Neovim
-    use {
-        "Vigemus/iron.nvim",
-        config = function ()
-            require('plugins.util.iron')
-        end
-    }
+--     use {
+--         "Vigemus/iron.nvim",
+--         config = function ()
+--             require('plugins.util.iron')
+--         end
+--     }
 
     -- Language specific plugins --
 
