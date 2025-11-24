@@ -41,7 +41,7 @@ end)
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("n", "<leader>src", "<cmd>:source $MYVIMRC<cr>")
 
-vim.keymap.set("n", "<leader>t", "<cmd>term<CR>")
+vim.keymap.set("n", "<leader>t", "<cmd>split | term<CR>")
 vim.keymap.set("t", "<leader><Esc>", "<C-\\><C-n>")
 
 vim.keymap.set({'t', 'i'}, '<A-h>', '<C-\\><C-n><C-w>h')
