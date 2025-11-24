@@ -42,6 +42,13 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("n", "<leader>src", "<cmd>:source $MYVIMRC<cr>")
 
 vim.keymap.set("n", "<leader>t", "<cmd>split | term<CR>")
+vim.keymap.set("n", "<leader>ts", "<cmd>tab split<CR>")
+vim.keymap.set("n", "<leader>ts", function ()
+    local win_id = vim.api.nvim_get_current_win()
+    vim.cmd('tab split')
+    vim.api.nvim_win_close(win_id, true)
+end)
+
 vim.keymap.set("t", "<leader><Esc>", "<C-\\><C-n>")
 
 vim.keymap.set({'t', 'i'}, '<A-h>', '<C-\\><C-n><C-w>h')

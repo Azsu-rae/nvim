@@ -1,7 +1,7 @@
 
 -- constants --
 
-PROJECTS_DIR = "C:\\Users\\aitam\\Projects"
+PROJECTS_DIR = "C:\\Users\\a50055268\\Projects"
 
 -- vimscript global variables --
 
