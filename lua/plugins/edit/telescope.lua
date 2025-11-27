@@ -31,6 +31,7 @@ M.startpicker.display = function()
     local projects = vim.fn.glob(PROJECTS_DIR .. "/*", true, true)  -- list of dirs in projects_dir
     local projectpath = {}
     local names = {}
+
     names[1] = 'nvim'
     projectpath['nvim'] = vim.fn.stdpath('config')
     for i, path in ipairs(projects) do

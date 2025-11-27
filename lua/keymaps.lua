@@ -49,6 +49,10 @@ vim.keymap.set("n", "<leader>ts", function ()
     vim.api.nvim_win_close(win_id, true)
 end)
 
+vim.keymap.set("n", "<leader>prj", function()
+    require('plugins.edit.telescope').startpicker.display()
+end)
+
 vim.keymap.set("t", "<leader><Esc>", "<C-\\><C-n>")
 
 vim.keymap.set({'t', 'i'}, '<A-h>', '<C-\\><C-n><C-w>h')

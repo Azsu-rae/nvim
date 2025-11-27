@@ -1,22 +1,24 @@
 
--- for _, scheme in ipairs(vim.fn.getcompletion('', 'color')) do
---     print(scheme)
--- end
+--for _, scheme in ipairs(vim.fn.getcompletion('', 'color')) do
+--    print(scheme)
+--end
 
 local schemes = {
     'oasis-abyss',
-    'oasis-cactus',
-    'oasis-canyon',
     'oasis-desert',
     'oasis-dune',
     'oasis-lagoon',
     'oasis-midnight',
     'oasis-mirage',
     'oasis-night',
-    'oasis-rose',
-    'oasis-sol',
-    'oasis-starlight',
     'oasis-twilight',
+    'monokai-pro',
+    'monokai-pro-classic',
+    'monokai-pro-default',
+    'monokai-pro-machine',
+    'monokai-pro-octagon',
+    'monokai-pro-ristretto',
+    'monokai-pro-spectrum',
 }
 
 local mappings = function(prompt_bufnr, _)

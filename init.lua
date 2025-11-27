@@ -1,8 +1,9 @@
 
 PROJECTS_DIR = "C:\\Users\\a50055268\\Projects"
 Colorschemes = {
-    {"rose-pine/neovim", "rose-pine"},
-    {"uhs-robert/oasis.nvim", "oasis"},
+    "rose-pine/neovim",
+    "uhs-robert/oasis.nvim",
+    "loctvl842/monokai-pro.nvim",
 }
 vim.cmd.colorscheme(vim.fn.readfile(vim.fn.stdpath('config') .. '/scheme.txt')[1])
 

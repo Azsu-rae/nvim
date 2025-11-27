@@ -21,7 +21,7 @@ local function plugins(use)
 
     -- colorscheme
     for _, colorscheme in ipairs(Colorschemes) do
-        use(colorscheme[1])
+        use(colorscheme)
     end
 
     -- file tree

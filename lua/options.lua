@@ -6,6 +6,7 @@
 
 -- Make 'yank' and 'paste' use the system clipboard
 vim.schedule(function() vim.opt.clipboard = "unnamedplus" end)
+vim.o.laststatus = 3
 
 vim.opt.shell = "powershell"
 vim.opt.shellcmdflag = "-NoLogo -ExecutionPolicy RemoteSigned -Command"
