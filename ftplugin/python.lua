@@ -1,6 +1,8 @@
 
 vim.keymap.set('n', '<leader>csl', string.format("<cmd>split | term ipython -i %s <cr>", vim.fn.expand("%:p")))
 
+vim.keymap.set('n', '<leader>mm', string.format("<cmd>split | term manim -pqh %s <cr>", vim.fn.expand("%:p")))
+
 vim.o.foldmethod = "expr"   -- or "syntax"
 vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 vim.o.foldlevel = 99          -- keep folds open by default
