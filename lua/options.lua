@@ -13,6 +13,9 @@ vim.opt.shellcmdflag = "-NoLogo -ExecutionPolicy RemoteSigned -Command"
 vim.opt.shellquote = ""
 vim.opt.shellxquote = ""
 
+-- I don't like swap files
+vim.opt.swapfile = false
+
 -- Line numbers
 vim.opt.number = true -- Enable line numbers
 vim.opt.relativenumber = true -- Enable relative line numbers

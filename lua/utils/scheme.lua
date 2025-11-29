@@ -9,7 +9,7 @@ M.use = function(name)
     local hl = vim.api.nvim_get_hl(0, { name = "Normal" })
     local bg = string.format("#%06x", hl.bg)
 
-    local path = "C:\\Users\\a50055268\\AppData\\Local\\Packages\\Microsoft.WindowsTerminal_8wekyb3d8bbwe\\LocalState\\settings.json"
+    local path = "C:\\Users\\aitam\\AppData\\Local\\Packages\\Microsoft.WindowsTerminal_8wekyb3d8bbwe\\LocalState\\settings.json"
     local file = vim.fn.readfile(path)
     local json_str = table.concat(file, "\n")
     local term_config = vim.fn.json_decode(json_str)
