@@ -1,5 +1,5 @@
 
-PROJECTS_DIR = "C:\\Users\\a50055268\\Projects"
+PROJECTS_DIR = "C:\\Users\\aitam\\Projects"
 Colorschemes = {
     "rose-pine/neovim",
     "uhs-robert/oasis.nvim",
