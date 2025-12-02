@@ -1,5 +1,5 @@
 
-vim.keymap.set('n', '<leader>csl', string.format("<cmd>split | term ipython -i %s <cr>", vim.fn.expand("%:p")))
+vim.keymap.set('n', '<leader>csl', string.format("<cmd>split | term ipython -i '%s' <cr>", vim.fn.expand("%:p")))
 
 vim.keymap.set('n', '<leader>mm', string.format("<cmd>split | term manim -pqh %s <cr>", vim.fn.expand("%:p")))
 
@@ -12,7 +12,7 @@ local runcmds = require('utils.runcmds')
 local cmd = {
     compiled = false,
     template = {
-        exec = "py %s"
+        exec = "py '%s'"
     }
 }
 

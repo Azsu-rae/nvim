@@ -11,7 +11,7 @@ M.runfile = function(cmd)
     local fullpath = vim.fn.expand("%:p")
 
     if not cmd.compiled then
-        vim.cmd("split | term " .. string.format(cmd.template.exec, fullpath))
+        vim.cmd("split | term " .. string.format(cmd.template.exec, fullpath) .. "")
         return
     end
 
@@ -23,7 +23,7 @@ M.runfile = function(cmd)
         return
     end
 
-    vim.cmd("split | term " .. string.format(cmd.template.exec, compilation_output))
+    vim.cmd("split | term " .. string.format(cmd.template.exec, compilation_output) .. "")
 
     if cmd.save_output then return end
     vim.api.nvim_create_autocmd({"BufWipeout", "BufUnload"}, {
