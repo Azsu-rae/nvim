@@ -1,5 +1,5 @@
-# Windows Development Environment Setup Guide
-
+# Windows Development Environment Setup Guide 
+# (Old configuration, kept for references)
 ## Useful Links
 
 ### Colorschemes
