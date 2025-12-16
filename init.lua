@@ -9,11 +9,13 @@ vim.diagnostic.config {
 vim.pack.add {
     'https://github.com/EdenEast/nightfox.nvim',
     'https://github.com/nvim-treesitter/nvim-treesitter',
---    'https://github.com/mason-org/mason.nvim',
+    'https://github.com/mason-org/mason.nvim',
 }
 
+require('mason').setup()
+
 require('nvim-treesitter').install {'python', 'lua'}
-vim.cmd.colorscheme('carbonfox')
+--vim.cmd.colorscheme('carbonfox')
 
 vim.api.nvim_create_autocmd('TextYankPost', {
     pattern = '*',
