@@ -15,12 +15,6 @@ vim.keymap.set("n", "<leader>c", function()
     vim.cmd(string.format("split | term ipython -i '%s'", vim.fn.expand('%:p')))
 end)
 
-vim.keymap.set("n", "<leader>st", function()
-    local win_id = vim.api.nvim_get_current_win()
-    vim.cmd('tab split')
-    vim.api.nvim_win_close(win_id, true)
-end, { desc="[S]plit into a new [T]ab" })
-
 vim.keymap.set("n", "<leader>r", function()
 
     local file_path = vim.fn.expand("%:p")
