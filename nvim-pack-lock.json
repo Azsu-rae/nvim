@@ -1,8 +1,16 @@
 {
   "plugins": {
+    "kanso.nvim": {
+      "rev": "2aaecdc66e03f85b73ccad47cf2d837312d5bf6a",
+      "src": "https://github.com/webhooked/kanso.nvim"
+    },
     "mason.nvim": {
       "rev": "57e5a8addb8c71fb063ee4acda466c7cf6ad2800",
       "src": "https://github.com/mason-org/mason.nvim"
+    },
+    "mini.nvim": {
+      "rev": "7e55c3d2c04da134085a31156196836f80a89982",
+      "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "nightfox.nvim": {
       "rev": "ba47d4b4c5ec308718641ba7402c143836f35aa9",

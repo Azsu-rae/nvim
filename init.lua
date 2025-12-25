@@ -1,19 +1,22 @@
 
-local windows = vim.uv.os_uname().sysname == "Windows_NT"
-local vimrc = "~/.vimrc" and not windows or "~/_vimrc"
+in_windows = vim.uv.os_uname().sysname == "Windows_NT"
 
-vim.pack.add({
-  "https://github.com/nvim-treesitter/nvim-treesitter",
-  "https://github.com/mason-org/mason.nvim",
-  "https://github.com/EdenEast/nightfox.nvim",
-})
+-- Use powershell instead of command prompt
+if in_windows then
+  vim.opt.shell = "pwsh"
+  vim.opt.shellcmdflag = "-NoLogo -Command"
+  vim.opt.shellquote = ""
+  vim.opt.shellxquote = ""
+end
 
-vim.cmd.colorscheme("carbonfox")
+-- Source vim config
+local vimrc = "~/.vimrc" and not in_windows or "~/_vimrc"
 vim.cmd.source(vimrc)
 
-require("nvim-treesitter").install({"lua", "python"})
-require("mason").setup()
+-- setup plugins
+require('plugins')
 
+-- lsp
 vim.lsp.enable({"pylsp", "lua_ls"})
 vim.diagnostic.config {
   virtual_text = true
@@ -35,6 +38,10 @@ vim.keymap.set("n", "<leader>st", function()
   vim.cmd("tab split")
   vim.api.nvim_win_close(win_id, true)
 end, { desc="[s]plit into a new [t]ab" })
+
+vim.keymap.set("n", "<leader>vi", function()
+  vim.cmd("split | term tree")
+end)
 
 vim.keymap.set("n", "<leader>git", function()
 
