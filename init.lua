@@ -10,7 +10,7 @@ if in_windows then
 end
 
 -- Source vim config
-local vimrc = "~/.vimrc" and not in_windows or "~/_vimrc"
+local vimrc = in_windows and "~/_vimrc" or "~/.vimrc"
 vim.cmd.source(vimrc)
 
 -- setup plugins
@@ -33,15 +33,9 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end
 })
 
-vim.keymap.set("n", "<leader>st", function()
-  local win_id = vim.api.nvim_get_current_win()
-  vim.cmd("tab split")
-  vim.api.nvim_win_close(win_id, true)
-end, { desc="[s]plit into a new [t]ab" })
-
 vim.keymap.set("n", "<leader>vi", function()
   vim.cmd("split | term tree")
-end)
+end, { desc = "[Vi]sualize directory structure"})
 
 vim.keymap.set("n", "<leader>git", function()
 
@@ -52,4 +46,5 @@ vim.keymap.set("n", "<leader>git", function()
   end
 
   vim.cmd("split | term git add . && git commit -m '%s' && git push origin main")
-end)
+
+end, { desc = "Commit and push [git] changes"})
