@@ -1,20 +1,12 @@
 
-in_windows = vim.uv.os_uname().sysname == "Windows_NT"
+local osinfo = require('osinfo')
+vim.cmd.source(osinfo.vimrc)
 
--- Use powershell instead of command prompt
-if in_windows then
-  vim.opt.shell = "pwsh"
-  vim.opt.shellcmdflag = "-NoLogo -Command"
-  vim.opt.shellquote = ""
-  vim.opt.shellxquote = ""
-end
-
--- Source vim config
-local vimrc = in_windows and "~/_vimrc" or "~/.vimrc"
-vim.cmd.source(vimrc)
+-- available globally
+in_windows = osinfo.in_windows
 
 -- setup plugins
-require('plugins')
+require('config.lazy')
 
 -- lsp
 vim.lsp.enable({"pylsp", "lua_ls"})
