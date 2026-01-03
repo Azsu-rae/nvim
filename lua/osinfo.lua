@@ -1,7 +1,6 @@
 
 local M = {}
 
-
 M.in_windows = vim.uv.os_uname().sysname == "Windows_NT"
 
 if M.in_windows then

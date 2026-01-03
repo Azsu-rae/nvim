@@ -25,10 +25,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end
 })
 
-vim.keymap.set("n", "<leader>vi", function()
-  vim.cmd("split | term tree")
-end, { desc = "[Vi]sualize directory structure"})
-
 vim.keymap.set("n", "<leader>git", function()
 
   local commit_message = vim.fn.input("Commit message: ")
@@ -37,6 +33,6 @@ vim.keymap.set("n", "<leader>git", function()
     return
   end
 
-  vim.cmd("split | term git add . && git commit -m '%s' && git push origin main")
+  vim.cmd(string.format("split | term git add . && git commit -m '%s' && git push origin main", commit_message))
 
 end, { desc = "Commit and push [git] changes"})

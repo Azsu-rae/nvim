@@ -13,9 +13,16 @@ vim.keymap.set("n", "<leader>r", function()
   local directory_path = vim.fn.fnamemodify(file_path, ":h")
   local directory_name = vim.fn.fnamemodify(file_path, ":h:t")
 
-  if vim.fn.getcwd() == directory_path then
+  if vim.uv.fs_stat("./run.sh") ~= nil then
+    vim.cmd("split | term ./run.sh")
+  elseif vim.fn.getcwd() == directory_path then
     vim.cmd("split | term " .. string.format("python -m %s", file_name))
   else
     vim.cmd("split | term " .. string.format("python -m %s.%s", directory_name, file_name))
   end
 end)
+
+vim.keymap.set("n", "<leader>vi", function()
+  vim.cmd("split | term tree -I __pycache__")
+end, { desc = "[Vi]sualize directory structure"})
+
