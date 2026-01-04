@@ -1,6 +1,18 @@
 
 local M = {}
 
+M.os = {}
+
+M.os.in_windows = vim.uv.os_uname().sysname == "Windows_NT"
+M.os.vimrc = M.in_windows and "~/_vimrc" or "~/.vimrc"
+
+if M.os.in_windows then
+  vim.opt.shell = "pwsh"
+  vim.opt.shellcmdflag = "-NoLogo -Command"
+  vim.opt.shellquote = ""
+  vim.opt.shellxquote = ""
+end
+
 function M.SyncWindowsTerminalBackground()
 
   -- read the .json config file as a string

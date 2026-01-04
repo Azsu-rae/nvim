@@ -3,6 +3,6 @@ return {
   lazy = false,
   build = ':TSUpdate',
   setup = function()
-    require("nvim-treesitter").install({"lua", "python"})
+    require("nvim-treesitter").install({"lua", "python", "typst"})
   end,
 }

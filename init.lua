@@ -1,9 +1,9 @@
 
-local osinfo = require('osinfo')
-vim.cmd.source(osinfo.vimrc)
+local util = require('util')
+vim.cmd.source(util.os.vimrc)
 
 -- available globally
-in_windows = osinfo.in_windows
+in_windows = util.os.in_windows
 
 -- setup plugins
 require('config.lazy')
