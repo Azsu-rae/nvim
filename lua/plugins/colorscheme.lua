@@ -1,6 +1,54 @@
 return {
-  "Mofiqul/dracula.nvim",
+  "rebelot/kanagawa.nvim",
   config = function()
-    vim.cmd.colorscheme('dracula')
-  end
+    require("kanagawa").setup({
+        compile = false,
+        undercurl = true,
+        commentStyle = { italic = true },
+        functionStyle = {},
+        keywordStyle = { italic = true },
+        statementStyle = { bold = true },
+        typeStyle = {},
+        transparent = true, -- 🔥 THIS is critical
+        dimInactive = false,
+        terminalColors = true,
+
+        colors = {
+            palette = {},
+            theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
+        },
+
+        overrides = function(colors)
+            local theme = colors.theme
+            return {
+                -- Main editor background
+                Normal = { bg = "none" },
+                NormalFloat = { bg = "none" },
+
+                -- Side columns
+                SignColumn = { bg = "none" },
+                FoldColumn = { bg = "none" },
+
+                -- Line numbers
+                LineNr = { fg = theme.ui.nontext },
+                CursorLineNr = { fg = theme.ui.special, bold = true },
+
+                -- Cursor line
+                CursorLine = { bg = "NONE" },
+
+                -- Floating windows borders
+                FloatBorder = { fg = theme.ui.border, bg = "none" },
+
+                -- Telescope / misc floats
+                Pmenu = { bg = "none" },
+                PmenuSel = { bg = theme.ui.bg_p2 },
+
+                -- Statusline (important for lualine)
+                StatusLine = { bg = "none" },
+                StatusLineNC = { bg = "none" },
+            }
+        end,
+    })
+    vim.cmd.colorscheme("kanagawa")
+  end,
 }
