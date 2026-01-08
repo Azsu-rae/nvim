@@ -1,11 +1,28 @@
 return {
   "nvim-telescope/telescope.nvim",
   config = function()
+    -- transparent caret/indicator on selected result
+    vim.api.nvim_set_hl(0, "TelescopeSelectionCaret",   { bg = "NONE" })
+    -- transparent selected result
+    vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "NONE" })
+    -- make the border area transparent
+    vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "NONE" })
+    -- if you want the prompt area transparent too
+    vim.api.nvim_set_hl(0, "TelescopePromptNormal", { bg = "NONE" })
+    vim.api.nvim_set_hl(0, "TelescopePromptBorder", { bg = "NONE" })
+    -- and the preview/results borders
+    vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { bg = "NONE" })
+    vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { bg = "NONE" })
 
     local actions = require("telescope.actions")
 
     require("telescope").setup({
       defaults = {
+        layout_strategy = "horizontal",
+        layout_config = { horizontal = { width = 0.95 } },
+        prompt_prefix = "🔍 ",
+        borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+        path_display = { "smart" },
         mappings = {
           i = {
             ["<Esc>"] = actions.close,
@@ -13,12 +30,19 @@ return {
             ["<C-j>"] = actions.move_selection_next, -- C-j goes up
           },
         },
-        pickers = {
-          find_files = {
-            hidden = false,
-            no_ignore = false,
-          },
+      },
+      pickers = {
+        find_files = {
+          hidden = false,
+          no_ignore = false,
+          theme = "ivy",
         },
+        buffers = {
+          theme = "ivy",
+          sort_lastused = true
+        },
+        live_grep = { theme = "ivy"},
+        help_tags = { theme = "ivy"},
       },
     })
   end,
@@ -33,18 +57,5 @@ return {
     { "<leader>wg", "<cmd>Telescope live_grep<CR>", desc = "Live Grep" },
     { "<leader>wb", "<cmd>Telescope buffers<CR>",  desc = "Buffers" },
     { "<leader>wh", "<cmd>Telescope help_tags<CR>",desc = "Help Tags" },
-  },
-  opts = {
-    defaults = {
-      layout_strategy = "flex",
-      layout_config = { horizontal = { width = 0.95 } },
-      prompt_prefix = "🔍 ",
-      borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
-      path_display = { "smart" },
-    },
-    pickers = {
-      find_files = { theme = "dropdown" },
-      buffers = { sort_lastused = true },
-    },
   },
 }
