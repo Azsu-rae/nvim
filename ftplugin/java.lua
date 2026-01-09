@@ -1,6 +1,23 @@
 
 vim.treesitter.start()
 
+vim.keymap.set("i", "<BS>", function()
+  local col = vim.fn.col(".") - 1
+  if col <= 0 then
+    return "<BS>"
+  end
+
+  local line = vim.fn.getline(".")
+  local before_cursor = line:sub(1, col)
+
+  -- If only whitespace before cursor → delete all of it
+  if before_cursor:match("^%s+$") then
+    return "<C-u>"
+  end
+
+  return "<BS>"
+end, { expr = true, noremap = true })
+
 vim.api.nvim_set_hl(0, "@lsp.type.modifier.java", {})
 vim.api.nvim_set_hl(0, "@lsp.type.namespace.java", {})
 
