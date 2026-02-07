@@ -1,19 +1,6 @@
 return {
   "nvim-telescope/telescope.nvim",
   config = function()
-    -- transparent caret/indicator on selected result
-    vim.api.nvim_set_hl(0, "TelescopeSelectionCaret",   { bg = "NONE" })
-    -- transparent selected result
-    vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "NONE" })
-    -- make the border area transparent
-    vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "NONE" })
-    -- if you want the prompt area transparent too
-    vim.api.nvim_set_hl(0, "TelescopePromptNormal", { bg = "NONE" })
-    vim.api.nvim_set_hl(0, "TelescopePromptBorder", { bg = "NONE" })
-    -- and the preview/results borders
-    vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { bg = "NONE" })
-    vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { bg = "NONE" })
-
     local actions = require("telescope.actions")
 
     require("telescope").setup({
@@ -26,8 +13,8 @@ return {
         mappings = {
           i = {
             ["<Esc>"] = actions.close,
-            ["<C-k>"] = actions.move_selection_previous,     -- C-k goes down
-            ["<C-j>"] = actions.move_selection_next, -- C-j goes up
+            ["<C-k>"] = actions.move_selection_previous, -- C-k goes down
+            ["<C-j>"] = actions.move_selection_next,     -- C-j goes up
           },
         },
       },
@@ -41,21 +28,21 @@ return {
           theme = "ivy",
           sort_lastused = true
         },
-        live_grep = { theme = "ivy"},
-        help_tags = { theme = "ivy"},
+        live_grep = { theme = "ivy" },
+        help_tags = { theme = "ivy" },
       },
     })
   end,
 
-  cmd = "Telescope",              -- load when :Telescope is run
-  version = "0.1.x",              -- use a stable tag
+  cmd = "Telescope",         -- load when :Telescope is run
+  version = "0.1.x",         -- use a stable tag
   dependencies = {
-    "nvim-lua/plenary.nvim",      -- required helper library
+    "nvim-lua/plenary.nvim", -- required helper library
   },
   keys = {
-    { "<leader>f", "<cmd>Telescope find_files<CR>", desc = "Find Files" },
-    { "<leader>wg", "<cmd>Telescope live_grep<CR>", desc = "Live Grep" },
-    { "<leader>wb", "<cmd>Telescope buffers<CR>",  desc = "Buffers" },
-    { "<leader>wh", "<cmd>Telescope help_tags<CR>",desc = "Help Tags" },
+    { "<leader>f",  "<cmd>Telescope find_files<CR>", desc = "Find Files" },
+    { "<leader>wg", "<cmd>Telescope live_grep<CR>",  desc = "Live Grep" },
+    { "<leader>wb", "<cmd>Telescope buffers<CR>",    desc = "Buffers" },
+    { "<leader>wh", "<cmd>Telescope help_tags<CR>",  desc = "Help Tags" },
   },
 }

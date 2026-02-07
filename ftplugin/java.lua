@@ -1,4 +1,3 @@
-
 vim.treesitter.start()
 
 vim.keymap.set("i", "<BS>", function()
@@ -31,12 +30,12 @@ local config = {
   -- As alternative you could also avoid the `jdtls` wrapper and launch
   -- eclipse.jdt.ls via the `java` executable
   -- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
-  cmd = {"jdtls"},
+  cmd = { "jdtls" },
 
 
   -- `root_dir` must point to the root of your project.
   -- See `:help vim.fs.root`
-  root_dir = vim.fs.root(0, {'gradlew', '.git', 'mvnw', 'pom.xml'}),
+  root_dir = vim.fs.root(0, { 'gradlew', '.git', 'mvnw', 'pom.xml' }),
 
 
   -- Here you can configure eclipse.jdt.ls specific settings

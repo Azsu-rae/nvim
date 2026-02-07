@@ -1,4 +1,3 @@
-
 local colorscheme_config = {
   compile = false,
   undercurl = true,
@@ -51,18 +50,7 @@ local colorscheme_config = {
 return {
   "rebelot/kanagawa.nvim",
   config = function()
-    require("kanagawa").setup(colorscheme_config)
+    --    require("kanagawa").setup(colorscheme_config)
     vim.cmd.colorscheme("kanagawa")
-
-    vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
-    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
-
-    vim.api.nvim_set_hl(0, "DiagnosticSignError", { fg = "#F7768E", bg = "NONE" })
-    vim.api.nvim_set_hl(0, "DiagnosticSignWarn",  { fg = "#E6C384", bg = "NONE" })
-    vim.api.nvim_set_hl(0, "DiagnosticSignInfo",  { fg = "#7A88CF", bg = "NONE" })
-    vim.api.nvim_set_hl(0, "DiagnosticSignHint",  { fg = "#A9B1D6", bg = "NONE" })
-
-    vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE" })
-    vim.api.nvim_set_hl(0, "LineNr",   { bg = "NONE", fg = "#54546D" })
   end,
 }

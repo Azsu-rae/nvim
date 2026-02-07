@@ -19,7 +19,7 @@ return {
 
     theme.command.c.bg = "#141414"
     theme.command.b.bg = "#222222"
---    kanagawa_lualine.normal.c.fg = "#ffffff"
+    --    kanagawa_lualine.normal.c.fg = "#ffffff"
 
 
     require("lualine").setup({
