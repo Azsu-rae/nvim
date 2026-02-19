@@ -1,4 +1,3 @@
-
 -- Remove trailing whitespace on save
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*",
@@ -12,7 +11,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 vim.api.nvim_create_autocmd("TextYankPost", {
   pattern = "*",
   desc = "Highlight when yanking (copying) text",
-  callback = function ()
+  callback = function()
     vim.highlight.on_yank({
       higroup = "IncSearch",
       timeout = 200,

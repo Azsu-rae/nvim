@@ -23,6 +23,7 @@ return {
           hidden = false,
           no_ignore = false,
           theme = "ivy",
+          previewer = false,
         },
         buffers = {
           theme = "ivy",
