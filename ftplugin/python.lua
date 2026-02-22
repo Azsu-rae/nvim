@@ -1,7 +1,7 @@
 vim.treesitter.start()
 
 vim.api.nvim_create_user_command("PySetup", function()
-  vim.cmd("!pip install 'python-lsp-server[all]' black autopep8 ruff")
+  vim.cmd("!pip install 'python-lsp-server[all]' black autopep8 ruff ipython")
 end, {})
 
 vim.keymap.set("n", "<leader>c", function()

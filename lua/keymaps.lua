@@ -1,4 +1,5 @@
 vim.keymap.set("n", "<leader>git", function()
+
   local commit_message = vim.fn.input("Commit message: ")
   if commit_message == "" then
     vim.notify("Aborted!")
@@ -21,6 +22,5 @@ end, { desc = "[Vi]sualize directory structure" })
 vim.keymap.set("n", "<leader>r", function()
   local filepath = vim.fn.expand('%')
   local filename = vim.fn.fnamemodify(filepath, ':t:r')
-  vim.notify(string.format("split | term ./run.sh %s %s", filepath, filename))
   vim.cmd(string.format("split | term ./run.sh %s %s", filepath, filename))
-end, { desc = "[R]un the run.sh script in the cwd" })
+end, { desc = "[R]un the run.sh script in the pwd" })

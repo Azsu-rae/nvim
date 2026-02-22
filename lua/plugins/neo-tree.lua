@@ -9,7 +9,7 @@ return {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
     "nvim-tree/nvim-web-devicons", -- icons
-    --    "antosha417/nvim-lsp-file-operations", -- optional LSP file ops
+    "antosha417/nvim-lsp-file-operations", -- optional LSP file ops
   },
   config = function()
     vim.keymap.set("n", "<leader>e", "<CMD>Neotree filesystem reveal toggle<CR>")
