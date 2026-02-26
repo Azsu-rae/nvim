@@ -39,5 +39,5 @@ vim.keymap.set("n", "<leader>xdg", function()
     return
   end
 
-  vim.cmd(string.format("!xdg-open %s", pdf_path))
+  vim.cmd(string.format("!xdg-open '%s'", pdf_path))
 end)

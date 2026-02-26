@@ -5,7 +5,7 @@ return {
       require("mason").setup()
       -- 1. Register your custom configs from your lsp/ folder
       vim.lsp.enable({
-        "pylsp", "lua_ls", "bashls", "html", "cssls", "jsonls", "ts_ls", "clangd", "rust_analyzer"
+        "pylsp", "lua_ls", "bashls", "html", "cssls", "jsonls", "ts_ls", "clangd", "rust_analyzer", "tinymist",
       })
       vim.diagnostic.config {
         virtual_text = true
