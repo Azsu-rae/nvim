@@ -1,9 +1,8 @@
 return {
   "nvim-lualine/lualine.nvim",
   config = function()
-    local custom_gruvbox = require 'lualine.themes.gruvbox'
     require('lualine').setup {
-      options = { theme = custom_gruvbox },
+      options = { theme = require('lualine.themes.gruvbox-material') },
     }
     vim.opt.showmode = false
   end,
