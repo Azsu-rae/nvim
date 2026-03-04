@@ -1,21 +1,17 @@
-# Windows Development Environment Setup Guide 
-# (Old configuration, kept for references)
-## Useful Links
+# Useful Links
 
-### Colorschemes
+## Colorschemes
 - **Vim Colorschemes**: https://vimcolorschemes.com/i/trending
 - **Windows Terminal Themes**: https://windowsterminalthemes.dev/
 
-### Fonts
+## Fonts
 - **Nerd Fonts**: https://www.nerdfonts.com/font-downloads
 
 ---
 
-## Installation Steps
+# Windows Development Environment Setup Guide
 
-### 1. Core Tools Installation
-
-Install Microsoft Visual Studio (not VSCode)
+## Software to Install
 
 Install Neovim:
 ```bash
@@ -36,9 +32,14 @@ Install Node.js (for python's pyright):
 winget install OpenJS.NodeJS
 ```
 
+Install Node.js ():
+```bash
+winget install OpenJS.NodeJS
+```
+
 ---
 
-### 2. Terminal Setup
+## 2. Terminal Setup
 
 1. Install your preferred Nerd Font from https://www.nerdfonts.com/font-downloads
 2. Select the installed font in your Windows Terminal default profile
@@ -72,14 +73,12 @@ This installs:
 
 ---
 
-### 4. Neovim Configuration
+## 4. Neovim Configuration
 
 After launching Neovim, run:
 ```vim
 :e $MYVIMRC
 ```
-
-Edit the project path as needed.
 
 Open the mingw64 shell and run:
 ```bash

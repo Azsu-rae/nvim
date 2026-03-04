@@ -2,16 +2,19 @@ return {
   'nvim-treesitter/nvim-treesitter',
   lazy = false,
   build = ':TSUpdate',
-  opts = {
-    ensure_installed = {
-      "html",
-      "java",
-      "javascript",
+  config = function()
+    require("nvim-treesitter").install({
       "lua",
       "python",
-      "sh",
-      "sql",
-      "typst",
-    },
-  },
+      "javascript",
+      "typescript",
+      "c",
+      "cpp",
+      "java",
+      "html",
+      "css",
+      "bash",
+      "json",
+    })
+  end
 }

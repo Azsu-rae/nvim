@@ -1,8 +1,6 @@
-if vim.g.neovide then
-  vim.o.guifont = "jetBrainsMono Nerd Font"
-end
 
-vim.cmd.source("~/.vimrc")
+require("osconfig")
+require("editor")
 
 require("config.lazy")
 
