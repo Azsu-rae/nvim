@@ -4,7 +4,6 @@ local watch_job = nil
 local pdf_path = nil
 
 vim.keymap.set("n", "<leader>wtch", function()
-  ---@diagnostic disable-next-line: unnecessary-if
   if watch_job then
     vim.notify("Typst watcher already running")
     return

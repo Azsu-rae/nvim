@@ -42,7 +42,7 @@ return {
   },
   keys = {
     { "<leader>f",  "<cmd>Telescope find_files<CR>", desc = "Find Files" },
-    { "<leader>g", "<cmd>Telescope live_grep<CR>",  desc = "Live Grep" },
+    { "<leader>gr", "<cmd>Telescope live_grep<CR>",  desc = "Live Grep" },
     { "<leader>lb", "<cmd>Telescope buffers<CR>",    desc = "[L]ist Buffers" },
     { "<leader>lh", "<cmd>Telescope help_tags<CR>",  desc = "[L]ist Help Tags" },
   },

@@ -15,6 +15,7 @@ return {
       "css",
       "bash",
       "json",
+      "scala",
     })
   end
 }

@@ -8,13 +8,18 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
-    "nvim-tree/nvim-web-devicons", -- icons
+    "nvim-tree/nvim-web-devicons",         -- icons
     "antosha417/nvim-lsp-file-operations", -- optional LSP file ops
   },
   config = function()
     vim.keymap.set("n", "<leader>e", "<CMD>Neotree filesystem reveal toggle<CR>")
 
     require("neo-tree").setup({
+      filesystem = {
+        filtered_items = {
+          hide_dotfiles = false,
+        },
+      },
       default_component_configs = {
         name = { use_git_status_colors = false },
         git_status = {
