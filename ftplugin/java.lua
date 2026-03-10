@@ -1,5 +1,3 @@
-vim.treesitter.start()
-
 vim.keymap.set("i", "<BS>", function()
   local col = vim.fn.col(".") - 1
   if col <= 0 then

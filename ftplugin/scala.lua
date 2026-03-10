@@ -1,5 +1,3 @@
-vim.treesitter.start()
-
 -- vim.api.nvim_set_hl(0, "@lsp.mod.readonly.scala", {})
 -- vim.api.nvim_set_hl(0, "@lsp.type.keyword.scala", {})
 -- vim.api.nvim_set_hl(0, "@lsp.type.class.scala", {})

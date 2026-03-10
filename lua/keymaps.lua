@@ -21,7 +21,6 @@ vim.keymap.set("n", "<leader>git", function()
   print(add)
   print(commit)
   print(push)
-
 end, { desc = "Commit and push [git] changes" })
 
 vim.keymap.set("n", "<leader>vi", function()
@@ -32,4 +31,5 @@ vim.keymap.set("n", "<leader>r", function()
   local filepath = vim.fn.expand('%')
   local filename = vim.fn.fnamemodify(filepath, ':t:r')
   vim.cmd(string.format("split | term ./run.sh %s %s", filepath, filename))
+  vim.cmd("startinsert")
 end, { desc = "[R]un the run.sh script in the pwd" })
