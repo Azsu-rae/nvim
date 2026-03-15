@@ -1,9 +1,9 @@
 
-set textwidth=114
+set textwidth=150
 
 set laststatus=3
 set splitbelow
-set cursorline
+set nocursorline
 set nowrap
 
 set expandtab
