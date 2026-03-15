@@ -64,25 +64,6 @@ This installs:
 - **GCC** for 64-bit development in `C:\msys64\mingw64\bin` (add to your Path)
 - **base-devel group** including `make` in `C:\msys64\usr\bin`
 
----
-
-## 4. Neovim Configuration
-
-After launching Neovim, run:
-```vim
-:e $MYVIMRC
-```
-
-Open the mingw64 shell and run:
-```bash
-cd /c/Users/<USERNAME>/AppData/Local/nvim-data/site/pack/packer/start/telescope-fzf-native.nvim
-make
-```
-
----
-
-## Environment Variables Summary
-
 Add the following directories to your Windows `Path` environment variable:
 - `C:\msys64` (for the shells)
 - `C:\msys64\mingw64\bin` (for gcc & g++)
