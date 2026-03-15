@@ -1,17 +1,18 @@
-# Useful Links
-
-## Colorschemes
-- **Vim Colorschemes**: https://vimcolorschemes.com/i/trending
-- **Windows Terminal Themes**: https://windowsterminalthemes.dev/
-
-## Fonts
-- **Nerd Fonts**: https://www.nerdfonts.com/font-downloads
-
----
 
 # Windows Development Environment Setup Guide
 
-## Software to Install
+## 1. Terminal Setup
+
+1. Install your preferred Nerd Font from https://www.nerdfonts.com/font-downloads
+2. Select the installed font in your Windows Terminal default profile
+3. Choose a colorscheme from https://windowsterminalthemes.dev/
+4. Copy and paste the colorscheme into the Windows Terminal `.json` config file under the `schemes` entry
+
+---
+
+## 2. Software to Install
+
+Install Microsoft Visual Studio (Not Visual Studio code) [here](https://visualstudio.microsoft.com/)
 
 Install Neovim:
 ```bash
@@ -23,28 +24,20 @@ Install Git:
 winget install --id Git.Git -e --source winget
 ```
 
-Install ripgrep:
+Install Node.js (for the tree-sitter-cli):
+```bash
+winget install OpenJS.NodeJS
+```
+
+Then install the tree-sitter-cli to compile and install parsers:
+```
+npm install --global tree-sitter-cli
+```
+
+Install ripgrep for the telescope grep picker:
 ```bash
 winget install --id BurntSushi.ripgrep.MSVC -e --source winget
 ```
-Install Node.js (for python's pyright):
-```bash
-winget install OpenJS.NodeJS
-```
-
-Install Node.js ():
-```bash
-winget install OpenJS.NodeJS
-```
-
----
-
-## 2. Terminal Setup
-
-1. Install your preferred Nerd Font from https://www.nerdfonts.com/font-downloads
-2. Select the installed font in your Windows Terminal default profile
-3. Choose a colorscheme from https://windowsterminalthemes.dev/
-4. Copy and paste the colorscheme into the Windows Terminal `.json` config file under the `schemes` entry
 
 ---
 
