@@ -41,7 +41,7 @@ winget install --id BurntSushi.ripgrep.MSVC -e --source winget
 
 ---
 
-### 3. MSYS2 Setup
+## 3. MSYS2 Setup
 
 Install MSYS2:
 ```bash
@@ -67,3 +67,21 @@ This installs:
 Add the following directories to your Windows `Path` environment variable:
 - `C:\msys64` (for the shells)
 - `C:\msys64\mingw64\bin` (for gcc & g++)
+
+## 4. JVM Setup
+
+Dowload the Java SDK from the official website. Create the `JAVA_HOME` environment variable. It should point to
+the java installation (and not the `bin/`). For example:
+
+```
+C:\Program Files\Java\jdk-25.0.2
+```
+
+## 5. Typst Setup
+
+You can get both the typst commandline utility and the LSP from winget:
+
+```
+winget install typst
+winget install tinymist
+```
