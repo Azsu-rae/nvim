@@ -33,5 +33,5 @@ vnoremap <leader>P "+P
 vnoremap <leader>y "+y
 nnoremap <leader>y "+y
 
-nnoremap <leader>b <CMD>buffer #<CR>
+nnoremap <leader>b <CMD>b #<CR>
 nnoremap <leader>t <CMD>split <BAR> term<CR>i

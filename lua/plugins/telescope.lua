@@ -14,10 +14,7 @@ return {
   opts = {
     defaults = {
       file_ignore_patterns = {
-        "node_modules",
-        ".git/",
-        "dist/",
-        "build/",
+        "%.git/.*",
       },
       layout_strategy = "horizontal",
       layout_config = { horizontal = { width = 0.95 } },
@@ -37,7 +34,13 @@ return {
         hidden = true,
         no_ignore = false,
         theme = "ivy",
-        previewer = false,
+        previewer = true,
+        find_command = {
+          "rg",
+          "--files",
+          "--hidden",
+          "--glob", "!.git/*",
+        }
       },
       buffers = {
         theme = "ivy",

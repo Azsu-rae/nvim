@@ -1,10 +1,6 @@
 return {
   "lukas-reineke/indent-blankline.nvim",
   config = function()
-    require("ibl").setup({
-      indent = {
-        char = "╎",
-      },
-    })
-  end,
+    require("ibl").setup()
+  end
 }
