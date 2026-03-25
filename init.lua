@@ -7,4 +7,4 @@ require("config.lazy")
 
 require("autocmds")
 require("keymaps")
-require("highlights")
+require("highlights").set_transparent_bg()

@@ -1,3 +1,6 @@
+local actions = require("telescope.actions")
+
+
 return {
   "nvim-telescope/telescope.nvim",
   cmd = "Telescope",         -- load when :Telescope is run
@@ -5,6 +8,19 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim", -- required helper library
   },
+  config = function(_, opts)
+    require("telescope").setup(opts)
+    local transparent = require("highlights").transparent
+
+    transparent("TelescopeNormal")
+    transparent("TelescopeBorder")
+    transparent("TelescopePromptNormal")
+    transparent("TelescopePromptBorder")
+    transparent("TelescopeResultsNormal")
+    transparent("TelescopePreviewNormal")
+    transparent("TelescopeSelection")
+    transparent("TelescopeSelectionCaret")
+  end,
   keys = {
     { "<leader>f",  "<cmd>Telescope find_files<CR>", desc = "Find Files" },
     { "<leader>gr", "<cmd>Telescope live_grep<CR>",  desc = "Live Grep" },
@@ -23,9 +39,9 @@ return {
       path_display = { "smart" },
       mappings = {
         i = {
-          ["<Esc>"] = require("telescope.actions").close,
-          ["<C-k>"] = require("telescope.actions").move_selection_previous, -- C-k goes down
-          ["<C-j>"] = require("telescope.actions").move_selection_next,     -- C-j goes up
+          ["<Esc>"] = actions.close,
+          ["<C-k>"] = actions.move_selection_previous, -- C-k goes down
+          ["<C-j>"] = actions.move_selection_next,     -- C-j goes up
         },
       },
     },

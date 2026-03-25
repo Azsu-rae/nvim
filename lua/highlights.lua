@@ -1,48 +1,39 @@
 vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#ffa066", bg = "NONE" })
 
-local set = vim.api.nvim_set_hl
-
 local function transparent(group)
   local hl = vim.api.nvim_get_hl(0, { name = group })
   hl.bg = "NONE"
-  set(0, group, hl)
+  vim.api.nvim_set_hl(0, group, hl)
 end
 
--- Normal editor windows
-transparent("Normal")
-transparent("NormalNC")
+local function set_transparent_bg()
+  -- Normal editor windows
+  transparent("Normal")
+  transparent("NormalNC")
+  transparent("CursorLine")
 
--- Floating windows (Telescope, LSP popups, etc.)
-transparent("NormalFloat")
-transparent("FloatBorder")
+  -- Floating windows (Telescope, LSP popups, etc.)
+  transparent("NormalFloat")
+  transparent("FloatBorder")
 
--- Window separators
-transparent("WinSeparator")
+  -- Window separators (already set)
+  -- transparent("WinSeparator")
 
--- Sign column / number column
-transparent("SignColumn")
-transparent("LineNr")
-transparent("CursorLineNr")
+  -- Sign column / number column
+  transparent("LineNr")
 
--- Telescope specific
-transparent("TelescopeNormal")
-transparent("TelescopeBorder")
-transparent("TelescopePromptNormal")
-transparent("TelescopePromptBorder")
-transparent("TelescopeResultsNormal")
-transparent("TelescopePreviewNormal")
+  transparent("SignColumn")
+  transparent("DiagnosticSignError")
+  transparent("DiagnosticSignWarn")
+  transparent("DiagnosticSignInfo")
+  transparent("DiagnosticSignHint")
 
--- Remove background of the selected entry arrow
-transparent("TelescopeSelection")
-transparent("TelescopeSelectionCaret")
+  -- Same but when cursorline is set
+  transparent("CursorLineNr")
+  transparent("CursorLineSign")
+end
 
-transparent("SignColumn")
-transparent("SignColumnSB") -- sometimes used with scrollbars
-transparent("DiagnosticSignError")
-transparent("DiagnosticSignWarn")
-transparent("DiagnosticSignInfo")
-transparent("DiagnosticSignHint")
-
-transparent("FoldColumn")
-transparent("CursorLineFold")
-transparent("CursorLineSign")
+local M = {}
+M.transparent = transparent
+M.set_transparent_bg = set_transparent_bg
+return M

@@ -1,5 +1,6 @@
 
 set textwidth=150
+set wildignorecase
 
 set laststatus=3
 set splitbelow
