@@ -1,6 +1,3 @@
-local actions = require("telescope.actions")
-
-
 return {
   "nvim-telescope/telescope.nvim",
   cmd = "Telescope",         -- load when :Telescope is run
@@ -10,16 +7,11 @@ return {
   },
   config = function(_, opts)
     require("telescope").setup(opts)
-    local transparent = require("highlights").transparent
-
-    transparent("TelescopeNormal")
-    transparent("TelescopeBorder")
-    transparent("TelescopePromptNormal")
-    transparent("TelescopePromptBorder")
-    transparent("TelescopeResultsNormal")
-    transparent("TelescopePreviewNormal")
-    transparent("TelescopeSelection")
-    transparent("TelescopeSelectionCaret")
+    vim.defer_fn(function()
+      require("highlights").set_transparent_bg({ "TelescopeNormal", "TelescopeBorder", "TelescopePromptNormal",
+        "TelescopePromptBorder", "TelescopeResultsNormal", "TelescopePreviewNormal", "TelescopeSelection",
+        "TelescopeSelectionCaret" })
+    end, 100)
   end,
   keys = {
     { "<leader>f",  "<cmd>Telescope find_files<CR>", desc = "Find Files" },
@@ -39,9 +31,9 @@ return {
       path_display = { "smart" },
       mappings = {
         i = {
-          ["<Esc>"] = actions.close,
-          ["<C-k>"] = actions.move_selection_previous, -- C-k goes down
-          ["<C-j>"] = actions.move_selection_next,     -- C-j goes up
+          ["<Esc>"] = require("telescope.actions").close,
+          ["<C-k>"] = require("telescope.actions").move_selection_previous, -- C-k goes down
+          ["<C-j>"] = require("telescope.actions").move_selection_next,     -- C-j goes up
         },
       },
     },

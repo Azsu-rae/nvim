@@ -2,18 +2,28 @@ vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#ffa066", bg = "NONE" })
 
 local function transparent(group)
   local hl = vim.api.nvim_get_hl(0, { name = group })
+  if not hl then
+    vim.notify(string.format("didn't get %s", group))
+    return
+  end
   hl.bg = "NONE"
   vim.api.nvim_set_hl(0, group, hl)
 end
 
-local function set_transparent_bg()
+local function set_transparent_bg(hg)
+  if hg then
+    for _, group in ipairs(hg) do
+      transparent(group)
+    end
+  end
+
   -- Normal editor windows
   transparent("Normal")
   transparent("NormalNC")
   transparent("CursorLine")
 
   -- Floating windows (Telescope, LSP popups, etc.)
-  transparent("NormalFloat")
+  --  transparent("NormalFloat")
   transparent("FloatBorder")
 
   -- Window separators (already set)
