@@ -1,4 +1,6 @@
 vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#ffa066", bg = "NONE" })
+local me = {}
+me.hi = "hiell"
 
 local function transparent(group)
   local hl = vim.api.nvim_get_hl(0, { name = group })
@@ -46,4 +48,5 @@ end
 local M = {}
 M.transparent = transparent
 M.set_transparent_bg = set_transparent_bg
+M.hi = me
 return M
