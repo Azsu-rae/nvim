@@ -1,6 +1,3 @@
--- vim.keymap.set("n", "<leader>
-
-
 vim.keymap.set("n", "<leader>git", function()
   local commit_message = vim.fn.input("Commit message: ")
   if commit_message == "" then
