@@ -13,6 +13,17 @@ return {
   },
   config = function()
     vim.keymap.set("n", "<leader>e", "<CMD>Neotree filesystem reveal toggle<CR>")
+    vim.keymap.set("n", "<leader>E", "<CMD>Neotree action=show source=filesystem position=left toggle=false<CR>")
+
+    vim.keymap.set("i", "<C-l>", function()
+      vim.cmd("Neotree action=show source=filesystem position=left toggle=false")
+    end)
+
+    vim.keymap.set("t", "<C-o>", function()
+      vim.cmd("Neotree action=show source=filesystem position=left toggle=false")
+      vim.schedule(function() vim.cmd("startinsert") end)
+    end)
+
     vim.keymap.set("n", "<leader>ls", "<CMD>Neotree action=focus source=buffers position=float toggle=true<CR>")
 
     require("neo-tree").setup({
