@@ -32,38 +32,6 @@ return {
           hide_dotfiles = false,
         },
       },
-      default_component_configs = {
-        name = { use_git_status_colors = false },
-        git_status = {
-          symbols = {
-
-            -- Change *type* (what happened to the file)
-            --            added     = "➕", -- file added
-            --            modified  = "✱", -- file modified
-            --            deleted   = "🗑️", -- file deleted
-            --            renamed   = "➡️", -- file renamed
-            --
-            --            -- *Status* (state in git)
-            --            untracked = "?",  -- untracked
-            --            ignored   = "○",  -- ignored
-            --            unstaged  = "",  -- unstaged changes
-            --            staged    = "✔️", -- staged
-            --            conflict  = "",  -- merge conflict
-            -- Change *type* (what happened to the file)
-            added     = "", -- file added
-            modified  = "", -- file modified
-            deleted   = "", -- file deleted
-            renamed   = "", -- file renamed
-
-            -- *Status* (state in git)
-            untracked = "", -- untracked
-            ignored   = "", -- ignored
-            unstaged  = "", -- unstaged changes
-            staged    = "", -- staged
-            conflict  = "", -- merge conflict
-          },
-        },
-      },
     })
   end,
 }
