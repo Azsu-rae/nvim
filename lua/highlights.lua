@@ -38,6 +38,10 @@ local function set_transparent_bg(hg)
   transparent("DiagnosticSignInfo")
   transparent("DiagnosticSignHint")
 
+  transparent("TabLine")
+  transparent("TabLineSel")
+  transparent("TabLineFill")
+
   -- Same but when cursorline is set
   transparent("CursorLineNr")
   transparent("CursorLineSign")

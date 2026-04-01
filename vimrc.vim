@@ -1,5 +1,5 @@
 
-set textwidth=150
+set textwidth=117
 set wildignorecase
 set path+=**
 
