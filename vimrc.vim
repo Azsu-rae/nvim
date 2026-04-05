@@ -37,3 +37,6 @@ nnoremap <leader>y "+y
 
 nnoremap <leader>b <CMD>b #<CR>
 nnoremap <leader>t <CMD>split <BAR> term<CR>i
+
+nnoremap <M-l> zl
+nnoremap <M-h> zh
