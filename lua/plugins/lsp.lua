@@ -4,7 +4,7 @@ return {
     config = function()
       require("mason").setup()
       vim.lsp.enable({
-        "pylsp", "lua_ls", "bashls", "html", "cssls", "jsonls", "ts_ls", "clangd",
+        "pylsp", "lua_ls", "bashls", "html", "cssls", "jsonls", "ts_ls", "clangd", "texlab"
       })
       vim.diagnostic.config {
         virtual_text = true

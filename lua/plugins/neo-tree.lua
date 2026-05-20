@@ -27,7 +27,7 @@ return {
     require("neo-tree").setup({
       window = {
         mappings = {
-          ["z"] = open_with_xdg,
+          ["u"] = open_with_xdg,
         },
       },
       filesystem = {
