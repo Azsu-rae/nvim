@@ -1,3 +1,9 @@
+
+.*
+
+!.gitignore
+
+
 nvim-pack-lock.json
 lazy-lock.json
 lazyvim.json
