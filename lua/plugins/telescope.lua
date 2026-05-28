@@ -1,3 +1,16 @@
+
+local ok, actions = pcall(require, "telescope.actions")
+print(ok)
+local mappings_i = nil
+if ok then
+  local actions = require("telescope.actions")
+  mappings_i = {
+    ["<Esc>"] = actions.close,
+    ["<C-k>"] = actions.move_selection_previous, -- C-k goes down
+    ["<C-j>"] = actions.move_selection_next,     -- C-j goes up
+  }
+end
+
 return {
   "nvim-telescope/telescope.nvim",
   cmd = "Telescope",         -- load when :Telescope is run
@@ -30,11 +43,7 @@ return {
       borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
       path_display = { "smart" },
       mappings = {
-        i = {
-          ["<Esc>"] = require("telescope.actions").close,
-          ["<C-k>"] = require("telescope.actions").move_selection_previous, -- C-k goes down
-          ["<C-j>"] = require("telescope.actions").move_selection_next,     -- C-j goes up
-        },
+        i = mappings_i,
       },
     },
     pickers = {
