@@ -4,12 +4,12 @@ return {
   build = ':TSUpdate',
   config = function()
     local langs = { "lua", "python", "javascript", "typescript", "c", "cpp", "java", "html", "css", "bash", "json",
-      "scala", "typst", "latex" }
+      "scala", "typst", "latex", "htmldjango" }
     if require("osconfig").in_win then table.insert(langs, "powershell") end
     require("nvim-treesitter").install(langs)
     vim.api.nvim_create_autocmd('FileType', {
       pattern = { "lua", "python", "javascript", "typescript", "c", "cpp", "java", "html", "css", "sh", "json",
-        "scala", "typ", "tex" },
+        "scala", "typ", "tex", "htmldjango" },
       callback = function() vim.treesitter.start() end,
     })
   end

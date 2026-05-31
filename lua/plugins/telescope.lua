@@ -1,9 +1,6 @@
-
 local ok, actions = pcall(require, "telescope.actions")
-print(ok)
 local mappings_i = nil
 if ok then
-  local actions = require("telescope.actions")
   mappings_i = {
     ["<Esc>"] = actions.close,
     ["<C-k>"] = actions.move_selection_previous, -- C-k goes down

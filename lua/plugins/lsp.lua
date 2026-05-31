@@ -5,11 +5,9 @@
 -- json-lsp (keywords: json) "jsonls",
 -- css-lsp (keywords: css, scss, less) "cssls",
 -- html-lsp (keywords: html) "html",
+-- rust-analyzer
 --
 return {
-  {
-    "neovim/nvim-lspconfig",
-  },
   {
     "mason-org/mason.nvim",
     config = function()
@@ -17,11 +15,17 @@ return {
       vim.lsp.enable({
         "lua_ls", -- lua-language-server
         "bashls", -- bash-language-server
-        "clangd", -- clangd
-        "texlab", -- texlab
-        "jsonls", -- json-lsp
-        "cssls",  -- css-lsp
-        "html",   -- html-lsp
+
+        "pylsp",
+
+        "clangd",        -- clangd
+        "rust_analyzer", -- rust-analyzer
+
+        "texlab",        -- texlab
+
+        "jsonls",        -- json-lsp
+        "cssls",         -- css-lsp
+        "html",          -- html-lsp
       })
       vim.diagnostic.config {
         virtual_text = true
