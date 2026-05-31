@@ -24,7 +24,10 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = require("langs").ft,
   callback = function()
     vim.treesitter.start()
-    require("otter").activate()
+    local ok, actions = pcall(require, "otter")
+    if ok then
+      actions.activate()
+    end
   end,
 })
 
