@@ -1,7 +1,8 @@
 local M = {}
 
 M.lsp = {
-  "lua_ls", "bashls", "pylsp", "clangd", "rust_analyzer", "texlab", "jsonls", "cssls", "html", "ts_ls"
+  "lua_ls", "bashls", "pylsp", "clangd", "rust_analyzer", "texlab", "jsonls", "cssls", "html", "ts_ls",
+  "djls"
 }
 
 M.ts = {
