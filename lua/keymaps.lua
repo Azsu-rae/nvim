@@ -13,11 +13,9 @@ vim.keymap.set("n", "<leader>git", function()
 
   local add = vim.fn.system({ "git", "add", "." })
   local commit = vim.fn.system({ "git", "commit", "-m", commit_message })
-  local push = vim.fn.system({ "git", "push", "origin", branch })
 
   print(add)
   print(commit)
-  print(push)
 end, { desc = "Commit and push [git] changes" })
 
 vim.keymap.set("n", "<leader>vi", function()
