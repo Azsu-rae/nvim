@@ -8,6 +8,9 @@ return {
     'hrsh7th/cmp-cmdline',
     'hrsh7th/cmp-nvim-lsp',
 
+    -- formatting plugin
+    'onsails/lspkind.nvim',
+
     {
       -- snippet engine (required..)
       "L3MON4D3/LuaSnip",
@@ -40,6 +43,7 @@ return {
     -- Set up nvim-cmp.
     local cmp = require('cmp')
     local ls = require("luasnip")
+    local lspkind = require("lspkind")
 
     cmp.setup({
       snippet = {
@@ -83,7 +87,15 @@ return {
         { name = 'luasnip' },  -- For luasnip users.
       }, {
         { name = 'buffer' },   -- uses cmp-buffer
-      })
+      }),
+      formatting = {
+        format = lspkind.cmp_format({
+          mode = "symbol_text", -- shows icon + text label (e.g. "ƒ Function")
+          maxwidth = 50,
+          ellipsis_char = "...",
+          show_labelDetails = true,
+        }),
+      },
     })
 
     -- To use git you need to install the plugin petertriho/cmp-git and uncomment lines below
