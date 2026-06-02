@@ -7,13 +7,16 @@ M.lsp = {
 
 M.ts = {
   "lua", "python", "javascript", "typescript", "c", "cpp", "java",
-  "html", "css", "bash", "json", "scala", "typst", "latex", "htmldjango", "rust"
+  "html", "css", "bash", "json", "scala", "typst", "latex", "htmldjango",
+  "rust", "tsx",
 }
+
 if require("osconfig").in_win then table.insert(M.ts, "powershell") end
 
 M.ft = {
   "lua", "python", "javascript", "typescript", "c", "cpp", "java",
-  "html", "css", "sh", "json", "scala", "typ", "tex", "htmldjango", "rust"
+  "html", "css", "sh", "json", "scala", "typ", "tex", "htmldjango",
+  "rust", "javascriptreact"
 }
 
 return M
