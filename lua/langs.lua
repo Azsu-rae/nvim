@@ -2,7 +2,7 @@ local M = {}
 
 M.lsp = {
   "lua_ls", "bashls", "pylsp", "clangd", "rust_analyzer", "texlab", "jsonls", "cssls", "html", "ts_ls",
-  "djls"
+  "djls", "tinymist"
 }
 
 M.ts = {
@@ -13,7 +13,7 @@ if require("osconfig").in_win then table.insert(M.ts, "powershell") end
 
 M.ft = {
   "lua", "python", "javascript", "typescript", "c", "cpp", "java",
-  "html", "css", "sh", "json", "scala", "typ", "tex", "htmldjango", "rust"
+  "html", "css", "sh", "json", "scala", "typst", "tex", "htmldjango", "rust"
 }
 
 return M
