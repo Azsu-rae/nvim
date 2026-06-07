@@ -5,12 +5,6 @@ vim.keymap.set("n", "<leader>git", function()
     return
   end
 
-  local branch = vim.fn.input("Branch: ")
-  if branch == "" then
-    vim.notify("Aborted!")
-    return
-  end
-
   local add = vim.fn.system({ "git", "add", "." })
   local commit = vim.fn.system({ "git", "commit", "-m", commit_message })
 
