@@ -37,7 +37,18 @@ return {
   filetypes = { 'html', 'htmldjango' },
   root_markers = { 'package.json', '.git' },
   ---@type lspconfig.settings.html
-  settings = {},
+  settings = {
+    html = {
+      format = {
+        -- This forces every attribute onto its own line and aligns them
+        wrapAttributes = "auto",
+        -- Alternative: use "force" if you don't want them vertically aligned to the first attribute
+
+        -- Optional: Keeps the closing '>' on the same line as the last attribute
+        wrapLineLength = 80,
+      }
+    },
+  },
   init_options = {
     provideFormatter = true,
     embeddedLanguages = { css = true, javascript = true },

@@ -1,6 +1,9 @@
 return {
   "stevearc/conform.nvim",
   opts = {
+    formatters_by_ft = {
+      htmldjango = { "djlint" },
+    },
     format_after_save = function(bufnr)
       --      if vim.bo[bufnr].filetype == "htmldjango" then
       --        return nil
