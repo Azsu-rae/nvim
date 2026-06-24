@@ -1,9 +1,9 @@
 vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#ffa066", bg = "NONE" })
 
-vim.api.nvim_set_hl(0, "Pmenu", { bg = "#2a2a37" })                    -- slightly lifted from base
-vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#363646", bold = true })    -- selected row
-vim.api.nvim_set_hl(0, "PmenuThumb", { bg = "#54546d" })               -- scrollbar thumb
-vim.api.nvim_set_hl(0, "PmenuSbar", { bg = "#2a2a37" })                -- scrollbar track
+vim.api.nvim_set_hl(0, "Pmenu", { bg = "#2a2a37" })                 -- slightly lifted from base
+vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#363646", bold = true }) -- selected row
+vim.api.nvim_set_hl(0, "PmenuThumb", { bg = "#54546d" })            -- scrollbar thumb
+vim.api.nvim_set_hl(0, "PmenuSbar", { bg = "#2a2a37" })             -- scrollbar track
 vim.api.nvim_set_hl(0, "PmenuBorder", { fg = "#54546d" })
 
 local function transparent(group)
@@ -17,6 +17,10 @@ local function transparent(group)
 end
 
 local function set_transparent_bg(hg)
+  if vim.g.neovide then
+    return
+  end
+
   if hg then
     for _, group in ipairs(hg) do
       transparent(group)
