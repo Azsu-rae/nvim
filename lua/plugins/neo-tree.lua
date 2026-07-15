@@ -23,7 +23,7 @@ return {
     vim.keymap.set("n", "<leader>e",
       "<CMD>Neotree position=left source=filesystem action=focus toggle=true reveal=true<CR>")
     vim.keymap.set("n", "<leader>ls", "<CMD>Neotree position=float action=focus source=buffers toggle=true<CR>")
-    vim.keymap.set("n", "<leader>ge", "<CMD>Neotree position=float toggle source=filesystem <CR>")
+    vim.keymap.set("n", "<leader>ge", "<CMD>Neotree position=float toggle source=filesystem action=focus reveal=true<CR>")
     require("neo-tree").setup({
       window = {
         mappings = {

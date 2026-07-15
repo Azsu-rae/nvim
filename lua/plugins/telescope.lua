@@ -33,6 +33,7 @@ return {
     defaults = {
       file_ignore_patterns = {
         "%.git/.*",
+        "%.jar",
       },
       layout_strategy = "horizontal",
       layout_config = { horizontal = { width = 0.95 } },
