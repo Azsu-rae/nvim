@@ -34,6 +34,7 @@ return {
       file_ignore_patterns = {
         "%.git/.*",
         "%.jar",
+        "%.svg",
       },
       layout_strategy = "horizontal",
       layout_config = { horizontal = { width = 0.95 } },
