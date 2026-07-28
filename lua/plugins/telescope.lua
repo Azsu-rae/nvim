@@ -5,6 +5,8 @@ if ok then
     ["<Esc>"] = actions.close,
     ["<C-k>"] = actions.move_selection_previous, -- C-k goes down
     ["<C-j>"] = actions.move_selection_next,     -- C-j goes up
+    ["<C-n>"] = actions.preview_scrolling_down,
+    ["<C-p>"] = actions.preview_scrolling_up,
   }
 end
 
@@ -41,7 +43,7 @@ return {
       layout_config = { horizontal = { width = 0.95 } },
       prompt_prefix = "🔍 ",
       borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
-      path_display = { "smart" },
+      path_display = { "absolute" },
       mappings = {
         i = mappings_i,
       },
