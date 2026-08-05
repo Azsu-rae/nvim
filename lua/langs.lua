@@ -2,7 +2,7 @@ local M = {}
 
 M.lsp = {
   "lua_ls", "bashls", "pylsp", "clangd", "rust_analyzer", "texlab", "jsonls", "cssls", "html", "ts_ls",
-  "djls", "tinymist"
+  "djls", "tinymist", "basedpyright"
 }
 
 M.ts = {
