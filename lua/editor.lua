@@ -9,4 +9,9 @@ if vim.g.neovide then
   vim.g.neovide_hide_mouse_when_typing = true
   vim.g.neovide_message_area_drag_selection = true
   vim.g.neovide_refresh_rate = 0
+
+  vim.g.neovide_progress_bar_enabled = false
+  vim.g.neovide_progress_bar_height = 5.0
+  vim.g.neovide_progress_bar_animation_speed = 200.0
+  vim.g.neovide_progress_bar_hide_delay = 0.2
 end
