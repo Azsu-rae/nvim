@@ -3,6 +3,7 @@ return {
   opts = {
     formatters_by_ft = {
       htmldjango = { "djlint" },
+      python = { "black" },
     },
     format_after_save = function(bufnr)
       --      if vim.bo[bufnr].filetype == "htmldjango" then

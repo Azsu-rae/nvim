@@ -1,3 +1,17 @@
+-- vim.keymap.set("v", "<leader>x", function()
+--   local start = vim.fn.getpos("'<")
+--   local finish = vim.fn.getpos("'>")
+--
+--   local lines = vim.api.nvim_buf_get_text(
+--     0,
+--     start[2] - 1,
+--     start[3] - 1,
+--     finish[2] - 1,
+--     finish[3] - 1,
+--     {}
+--   )
+-- end, { desc = "Open currently selected uri" })
+
 vim.keymap.set("n", "<leader>git", function()
   local commit_message = vim.fn.input("Commit message: ")
   if commit_message == "" then
