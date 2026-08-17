@@ -19,6 +19,9 @@ return {
   },
   config = function(_, opts)
     require("telescope").setup(opts)
+
+    vim.keymap.set("i", "<C-f>", "<cmd>Telescope find_files<CR>")
+
     vim.defer_fn(function()
       require("highlights").set_transparent_bg({ "TelescopeNormal", "TelescopeBorder", "TelescopePromptNormal",
         "TelescopePromptBorder", "TelescopeResultsNormal", "TelescopePreviewNormal", "TelescopeSelection",
