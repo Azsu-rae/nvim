@@ -6,6 +6,9 @@ vim.api.nvim_set_hl(0, "PmenuThumb", { bg = "#54546d" })            -- scrollbar
 vim.api.nvim_set_hl(0, "PmenuSbar", { bg = "#2a2a37" })             -- scrollbar track
 vim.api.nvim_set_hl(0, "PmenuBorder", { fg = "#54546d" })
 
+-- vim.api.nvim_set_hl(0, "Normal", { bg = "#54546d" })
+-- vim.api.nvim_set_hl(0, "NormalNC", { bg = "#54546d" })
+
 local function transparent(group)
   local hl = vim.api.nvim_get_hl(0, { name = group })
   if not hl then
@@ -17,6 +20,9 @@ local function transparent(group)
 end
 
 local function set_transparent_bg(hg)
+  if true then
+    return
+  end
   if vim.g.neovide then
     return
   end
