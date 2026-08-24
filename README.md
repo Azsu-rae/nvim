@@ -2,6 +2,6 @@
 # Dependencies
 
 - git
-- npm
-    - tree-sitter-cli
 - ripgrep
+- tree-sitter-cli (homebrew, not npm)
+- wget and tar/unzip
