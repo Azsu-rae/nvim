@@ -7,15 +7,18 @@ local langs = {
   {
     name = "lua",
     lsp = "lua_ls",
+    mason_name = "lua-language-server",
     twospace_indent = true,
   },
   {
     name = "bash",
     lsp = "bashls",
+    mason_name = "bash-language-server",
     ft = "sh",
   },
   {
     name = "html",
+    mason_name = "html-lsp",
     twospace_indent = true,
     sublangs = {
       {
@@ -29,10 +32,12 @@ local langs = {
   {
     name = "css",
     lsp = "cssls",
+    mason_name = "css-lsp",
     twospace_indent = true,
   },
   {
     name = "javascript",
+    mason_name = "typescript-language-server",
     lsp = "ts_ls",
     twospace_indent = true,
     sublangs = {
@@ -46,11 +51,13 @@ local langs = {
   },
   {
     name = "json",
+    mason_name = "json-lsp",
     lsp = "jsonls",
     twospace_indent = true,
   },
   {
     name = "typescript",
+    mason_name = "typescript-language-server",
     lsp = "ts_ls",
     twospace_indent = true,
     sublangs = {
@@ -67,10 +74,12 @@ local langs = {
   {
     name = "rust",
     lsp = "rust_analyzer",
+    mason_name = "rust-analyzer",
   },
   {
     name = "java",
     lsp = "",  -- handled by the jdtls plugin
+    mason_name = "jdtls",  -- handled by the jdtls plugin
   },
   {
     name = "latex",
@@ -112,6 +121,8 @@ local function process(languages)
     if lang.twospace_indent then
       table.insert(M.twospace_indent, lang.ft)
     end
+
+    -- TODO: add the mason_name default value-ing
 
     if lang.sublangs then
       process(lang.sublangs)

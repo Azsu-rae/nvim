@@ -1,3 +1,4 @@
+
 -- text editing
 vim.pack.add {
   "https://github.com/windwp/nvim-autopairs",
@@ -24,7 +25,7 @@ vim.pack.add {
     "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
 }
 
-require("nvim-treesitter").install(require("languages").treesitter)
+require("nvim-treesitter").install(require("languages").treesitters)
 
 -- installing LSPs
 vim.pack.add {
