@@ -16,6 +16,8 @@ lua vim.diagnostic.config { virtual_text = true }
 set foldmethod=expr
 set foldlevel=99
 
+
+
 set path+=**
 set wildignorecase
 

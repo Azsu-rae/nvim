@@ -22,9 +22,9 @@ local langs = {
     twospace_indent = true,
     sublangs = {
       {
-        name = "django-template",
-        ft = "htmldjango",
+        name = "htmldjango",
         lsp = "djls",
+        mason_name = "",
         twospace_indent = true,
       },
     },
@@ -42,7 +42,7 @@ local langs = {
     twospace_indent = true,
     sublangs = {
       {
-        name = "JavaScript-XML",
+        name = "javascript-xml",
         ft = "javascriptreact",
         treesitter = "",
         lsp = "",
@@ -61,7 +61,7 @@ local langs = {
     lsp = "ts_ls",
     twospace_indent = true,
     sublangs = {
-      name = "TypeScript-XML",
+      name = "typescript-xml",
       treesitter = "tsx",
       ft = "",
       lsp = ""
