@@ -30,6 +30,7 @@ set laststatus=3
 set splitbelow
 
 set complete+=o
+" set autocomplete -- is bugged somehow
 
 set ignorecase
 set smartcase
