@@ -1,22 +1,21 @@
 
 colorscheme habamax
-
 lua require('vim._core.ui2').enable()
 
-lua require('autocmds')
+let mapleader = " "
+
 lua require('plugins')
+lua require('autocmds')
 
 lua vim.lsp.enable(require('languages').LSPs)
 lua vim.diagnostic.config { virtual_text = true }
 
-""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " OPTIONS
 
 " treesitter seems to sets foldexpr automatically
 set foldmethod=expr
 set foldlevel=99
-
-
 
 set path+=**
 set wildignorecase
@@ -51,10 +50,8 @@ set sidescroll=0
 
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 
-""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MAPPINGS
-
-" let mapleader = " "
 
 nnoremap <M-h> 3zh
 nnoremap <M-l> 3zl

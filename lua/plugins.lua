@@ -1,13 +1,29 @@
 
--- text editing
+--------------------------------------------------------------------------------
+-- MANAGING PACKAGES (LSPs, Treesitter Parsers, ...)
+
 vim.pack.add {
-  "https://github.com/windwp/nvim-autopairs",
+  "https://github.com/nvim-treesitter/nvim-treesitter",
+  "https://github.com/mason-org/mason.nvim",
+}
+
+require("nvim-treesitter").install(require("languages").treesitters)
+require("mason").setup()
+
+--------------------------------------------------------------------------------
+-- TEXT EDITING
+
+vim.pack.add {
+  "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
   "https://github.com/kylechui/nvim-surround",
+  "https://github.com/windwp/nvim-autopairs",
 }
 
 require("nvim-autopairs").setup {}
 
--- utilties
+--------------------------------------------------------------------------------
+-- UTILTIES (Git, Terminals, ...)
+
 vim.pack.add {
   "https://github.com/tpope/vim-fugitive",
   "https://github.com/akinsho/toggleterm.nvim",
@@ -18,28 +34,39 @@ require("toggleterm").setup {
   direction = "float",
 }
 
--- treesitter plugins
+--------------------------------------------------------------------------------
+-- VISUAL AID
+
 vim.pack.add {
-    "https://github.com/nvim-treesitter/nvim-treesitter",
-    "https://github.com/nvim-treesitter/nvim-treesitter-context",
-    "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
+  "https://github.com/nvim-treesitter/nvim-treesitter-context",
+  "https://github.com/lukas-reineke/indent-blankline.nvim",
 }
 
-require("nvim-treesitter").install(require("languages").treesitters)
+require("ibl").setup()
 
--- installing LSPs
+--------------------------------------------------------------------------------
+-- PICKERS, UI-EXTENSIONS & FILE EXPLORER
+
 vim.pack.add {
-  "https://github.com/mason-org/mason.nvim",
+  'https://github.com/stevearc/oil.nvim',
+  'https://github.com/nvim-lua/plenary.nvim',
+  'https://github.com/nvim-telescope/telescope.nvim',
+  'https://github.com/nvim-telescope/telescope-ui-select.nvim',
+  'https://github.com/folke/snacks.nvim',
+  -- 'nvim-telescope/telescope-fzf-native.nvim',
 }
 
-require("mason").setup()
+require('snacks').setup { input = { enabled = true } }
 
--- specific language plugins
+require("config.oil")
+require("config.telescope")
+
+--------------------------------------------------------------------------------
+-- LANGUAGE-SPECIFIC CONFIGURATIONS
+
 vim.pack.add {
-  -- java
-  "https://github.com/mfussenegger/nvim-jdtls",
-  -- NeoVim luaLS config
-  "https://github.com/folke/lazydev.nvim"
+  "https://github.com/mfussenegger/nvim-jdtls", -- Java
+  "https://github.com/folke/lazydev.nvim"       -- NeoVim LuaLS config
 }
 
 require("lazydev").setup {
@@ -49,16 +76,3 @@ require("lazydev").setup {
     { path = "${3rd}/luv/library", words = { "vim%.uv" } },
   },
 }
-
-vim.pack.add {
-  'https://github.com/stevearc/oil.nvim',
-}
-
-require("config.oil")
-
--- visual stuff
-vim.pack.add {
-  'https://github.com/lukas-reineke/indent-blankline.nvim'
-}
-
-require("ibl").setup()
