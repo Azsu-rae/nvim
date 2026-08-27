@@ -1,18 +1,19 @@
-return {
-  "stevearc/conform.nvim",
-  opts = {
-    formatters_by_ft = {
-      htmldjango = { "djlint" },
-      python = { "black" },
-    },
-    format_after_save = function(bufnr)
-      --      if vim.bo[bufnr].filetype == "htmldjango" then
-      --        return nil
-      --      end
-      return {
-        lsp_fallback = true,
-        async = true,
-      }
-    end,
+
+-- PLUGIN NOT INSTALLED
+-- "stevearc/conform.nvim",
+
+local opts = {
+  formatters_by_ft = {
+    htmldjango = { "djlint" },
+    python = { "black" },
   },
+  format_after_save = function(bufnr)
+    --      if vim.bo[bufnr].filetype == "htmldjango" then
+    --        return nil
+    --      end
+    return {
+      lsp_fallback = true,
+      async = true,
+    }
+  end,
 }

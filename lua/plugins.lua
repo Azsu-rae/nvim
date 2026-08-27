@@ -42,7 +42,12 @@ vim.pack.add {
   "https://github.com/lukas-reineke/indent-blankline.nvim",
 }
 
-require("ibl").setup()
+require("ibl").setup {
+  scope = {
+    enabled = true,
+    -- char = 'k',
+  },
+}
 
 --------------------------------------------------------------------------------
 -- PICKERS, UI-EXTENSIONS & FILE EXPLORER
@@ -56,7 +61,7 @@ vim.pack.add {
   -- 'nvim-telescope/telescope-fzf-native.nvim',
 }
 
-require('snacks').setup { input = { enabled = true } }
+-- require('snacks').setup { input = { enabled = true } }
 
 require("config.oil")
 require("config.telescope")

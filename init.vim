@@ -2,7 +2,7 @@
 colorscheme habamax
 lua require('vim._core.ui2').enable()
 
-let mapleader = " "
+" let mapleader = " "
 
 lua require('plugins')
 lua require('autocmds')
@@ -19,6 +19,7 @@ set foldlevel=99
 
 set path+=**
 set wildignorecase
+set wildignore+=*.class,*.jar
 
 set nowrap
 set cursorline
@@ -49,9 +50,14 @@ set sidescrolloff=3
 set sidescroll=0
 
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+set list
+
+set confirm
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MAPPINGS
 
 nnoremap <M-h> 3zh
 nnoremap <M-l> 3zl
+
+tnoremap <ESC><ESC> <C-\><C-n>
