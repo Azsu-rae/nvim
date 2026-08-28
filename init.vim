@@ -2,7 +2,7 @@
 colorscheme habamax
 lua require('vim._core.ui2').enable()
 
-" let mapleader = " "
+let mapleader = " "
 
 lua require('plugins')
 lua require('autocmds')
