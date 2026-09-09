@@ -1,11 +1,12 @@
 
-colorscheme habamax
+colorscheme catppuccin
 lua require('vim._core.ui2').enable()
 
 let mapleader = " "
 
 lua require('plugins')
 lua require('autocmds')
+lua require('config.neovide')
 
 lua vim.lsp.enable(require('languages').LSPs)
 lua vim.diagnostic.config { virtual_text = true }
@@ -19,7 +20,7 @@ set foldlevel=99
 
 set path+=**
 set wildignorecase
-set wildignore+=*.class,*.jar
+set wildignore+=*.class,*.jar,**/node_modules/**
 
 set nowrap
 set cursorline
@@ -30,9 +31,11 @@ set signcolumn=yes
 set laststatus=3
 
 set splitbelow
+set splitright
 
 set complete+=o
-" set autocomplete -- is bugged somehow
+"set completeopt+=noselect
+"set autocomplete
 
 set ignorecase
 set smartcase
@@ -57,7 +60,24 @@ set confirm
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MAPPINGS
 
+nnoremap <ESC> <CMD>noh<CR>
+
 nnoremap <M-h> 3zh
 nnoremap <M-l> 3zl
 
+nnoremap <M-ScrollWheelUp> 5zh
+nnoremap <M-ScrollWheelDown> 5zl
+
 tnoremap <ESC><ESC> <C-\><C-n>
+tnoremap <M-h> <LEFT>
+tnoremap <M-l> <RIGHT>
+tnoremap <M-k> <UP>
+tnoremap <M-j> <DOWN>
+tnoremap <C-M-h> <C-LEFT>
+tnoremap <C-M-l> <C-RIGHT>
+tnoremap <C-M-k> <C-UP>
+tnoremap <C-M-j> <C-DOWN>
+tnoremap <C-w>h <C-\><C-n><C-w>h
+tnoremap <C-w>l <C-\><C-n><C-w>l
+tnoremap <C-w>j <C-\><C-n><C-w>j
+tnoremap <C-w>k <C-\><C-n><C-w>k

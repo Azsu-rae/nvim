@@ -2,7 +2,8 @@
 local langs = {
   {
     name = "python",
-    lsp = "basedpyright",
+    -- lsp = "basedpyright",
+    lsp = "",
   },
   {
     name = "lua",

@@ -1,6 +1,7 @@
 vim.api.nvim_set_hl(0, "@lsp.type.namespace.java", {})
 vim.api.nvim_set_hl(0, "@lsp.type.modifier.java", {})
-
+vim.api.nvim_set_hl(0, "@lsp.type.modifier.oil", {})
+vim.api.nvim_set_hl(0, "@lsp.type.modifier.java", {})
 -- See `:help vim.lsp.start` for an overview of the supported `config` options.
 local config = {
   name = "jdtls",
@@ -41,4 +42,5 @@ local config = {
     bundles = {}
   },
 }
+
 require('jdtls').start_or_attach(config)
