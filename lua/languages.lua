@@ -2,8 +2,7 @@
 local langs = {
   {
     name = "python",
-    -- lsp = "basedpyright",
-    lsp = "",
+    lsp = "basedpyright",
   },
   {
     name = "lua",
@@ -45,6 +44,7 @@ local langs = {
       {
         name = "javascript-xml",
         ft = "javascriptreact",
+        twospace_indent = true,
         treesitter = "",
         lsp = "",
       },

@@ -14,13 +14,13 @@ lua vim.diagnostic.config { virtual_text = true }
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " OPTIONS
 
-" treesitter seems to sets foldexpr automatically
+" treesitter seems to set foldexpr automatically
 set foldmethod=expr
 set foldlevel=99
 
 set path+=**
 set wildignorecase
-set wildignore+=*.class,*.jar,**/node_modules/**
+set wildignore+=*.class,*.jar,**/node_modules/**,**/__pycache__/**
 
 set nowrap
 set cursorline
@@ -52,7 +52,7 @@ set sidescrolloff=3
 
 set sidescroll=0
 
-set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+set listchars=tab:>\ ,trail:∙,extends:>,precedes:<,nbsp:+
 set list
 
 set confirm
@@ -69,15 +69,7 @@ nnoremap <M-ScrollWheelUp> 5zh
 nnoremap <M-ScrollWheelDown> 5zl
 
 tnoremap <ESC><ESC> <C-\><C-n>
-tnoremap <M-h> <LEFT>
-tnoremap <M-l> <RIGHT>
-tnoremap <M-k> <UP>
-tnoremap <M-j> <DOWN>
-tnoremap <C-M-h> <C-LEFT>
-tnoremap <C-M-l> <C-RIGHT>
-tnoremap <C-M-k> <C-UP>
-tnoremap <C-M-j> <C-DOWN>
-tnoremap <C-w>h <C-\><C-n><C-w>h
-tnoremap <C-w>l <C-\><C-n><C-w>l
-tnoremap <C-w>j <C-\><C-n><C-w>j
-tnoremap <C-w>k <C-\><C-n><C-w>k
+for [v, a] in [["h", "LEFT"], ["l", "RIGHT"], ["k", "UP"], ["j", "DOWN"]]
+    execute "tnoremap " . $"<M-{v}> " . $"<{a}>"
+    execute "tnoremap " . $"<C-M-{v}> " . $"<C-{a}>"
+endfor
