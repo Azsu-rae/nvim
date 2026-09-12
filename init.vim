@@ -2,8 +2,6 @@
 colorscheme catppuccin
 lua require('vim._core.ui2').enable()
 
-let mapleader = " "
-
 lua require('plugins')
 lua require('autocmds')
 lua require('config.neovide')

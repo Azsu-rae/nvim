@@ -82,13 +82,14 @@ require("oil").setup({
         end
       end,
     },
-    ["<leader>:"] = {
-        "actions.open_terminal",
-        opts = {
-            shorten_path = true,
-            modify = ":h",
-        },
-        desc = "Open the terminal within the current oil dir",
-    },
+    -- TODO: make this open the toggle term terminal
+    -- ["g\\"] = {
+    --     "actions.open_terminal",
+    --     opts = {
+    --         shorten_path = true,
+    --         modify = ":h",
+    --     },
+    --     desc = "Open the terminal within the current oil dir",
+    -- },
   },
 })

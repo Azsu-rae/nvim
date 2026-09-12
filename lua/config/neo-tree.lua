@@ -1,4 +1,4 @@
-vim.keymap.set("n", "<leader>e", "<Cmd>Neotree reveal toggle<CR>")
+-- vim.keymap.set("n", "<leader>e", "<Cmd>Neotree reveal toggle<CR>")
 require("neo-tree").setup({
   source_selector = {
     winbar = true,
@@ -212,7 +212,7 @@ require("neo-tree").setup({
   filesystem = {
     filtered_items = {
       visible = false, -- when true, they will just be displayed differently than normal items
-      hide_dotfiles = true,
+      hide_dotfiles = false,
       hide_gitignored = true,
       hide_ignored = true, -- hide files that are ignored by other gitignore-like files
       -- other gitignore-like files, in descending order of precedence.
