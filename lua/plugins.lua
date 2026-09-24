@@ -79,9 +79,16 @@ require("config.telescope")
 -- LANGUAGE-SPECIFIC LSP CONFIGURATIONS
 
 vim.pack.add {
-  "https://github.com/mfussenegger/nvim-jdtls",  -- Java
+  "https://github.com/mfussenegger/nvim-jdtls",  -- Java LSP config
   "https://github.com/folke/lazydev.nvim",       -- NeoVim LuaLS config
+  "https://github.com/jidn/vim-dbml",                               -- DBML syntax
 }
+
+vim.lsp.config("dbml-language-server", {
+  cmd = { "dbml-language-server", "--stdio" },
+  filetypes = { "dbml" },
+  root_markers = { ".git" },
+})
 
 require("lazydev").setup {
   library = {

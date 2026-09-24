@@ -1,4 +1,3 @@
-
 local langs = {
   {
     name = "python",
@@ -62,10 +61,12 @@ local langs = {
     lsp = "ts_ls",
     twospace_indent = true,
     sublangs = {
-      name = "typescript-xml",
-      treesitter = "tsx",
-      ft = "",
-      lsp = ""
+      {
+        name = "typescript-xml",
+        treesitter = "tsx",
+        ft = "",
+        lsp = ""
+      }
     },
   },
   {
@@ -79,8 +80,8 @@ local langs = {
   },
   {
     name = "java",
-    lsp = "",  -- handled by the jdtls plugin
-    mason_name = "jdtls",  -- handled by the jdtls plugin
+    lsp = "",             -- handled by the jdtls plugin
+    mason_name = "jdtls", -- handled by the jdtls plugin
   },
   {
     name = "latex",
@@ -92,6 +93,13 @@ local langs = {
     ft = "typ",
     lsp = "tinymist",
   },
+  {
+    name = "dbml",
+    treesitter = "",
+    lsp = "dbml-language-server",
+    ft = "",
+    twospace_indent = true,
+  },
 }
 
 local M = {}
@@ -100,10 +108,11 @@ M.filetypes = {}
 M.treesitters = {}
 M.LSPs = {}
 M.twospace_indent = {}
+M.masons = {}
+M.newft = {}
 
 local function process(languages)
   for _, lang in ipairs(languages) do
-
     lang.ft = lang.ft or lang.name
     if lang.ft ~= "" then
       table.insert(M.filetypes, lang.ft)
@@ -123,7 +132,10 @@ local function process(languages)
       table.insert(M.twospace_indent, lang.ft)
     end
 
-    -- TODO: add the mason_name default value-ing
+    lang.mason_name = lang.mason_name or lang.lsp
+    if lang.mason_name ~= "" then
+      table.insert(M.masons, lang.mason_name)
+    end
 
     if lang.sublangs then
       process(lang.sublangs)
