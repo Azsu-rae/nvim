@@ -82,6 +82,7 @@ vim.pack.add {
   "https://github.com/mfussenegger/nvim-jdtls",  -- Java LSP config
   "https://github.com/folke/lazydev.nvim",       -- NeoVim LuaLS config
   "https://github.com/jidn/vim-dbml",                               -- DBML syntax
+  "https://github.com/matze/vim-move",
 }
 
 vim.lsp.config("dbml-language-server", {
