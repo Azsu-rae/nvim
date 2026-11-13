@@ -10,6 +10,8 @@ lua require('plugins')
 lua require('autocmds')
 lua require('config.neovide')
 
+execute 'source' stdpath('config') . '/configs/markdown-preview.vim'
+
 lua vim.lsp.enable(require('languages').LSPs)
 lua vim.diagnostic.config { virtual_text = true }
 

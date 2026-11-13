@@ -18,6 +18,7 @@ vim.pack.add {
   "https://github.com/kylechui/nvim-surround",
   "https://github.com/windwp/nvim-autopairs",
   "https://github.com/godlygeek/tabular",
+  "https://github.com/matze/vim-move",
 }
 
 require("nvim-autopairs").setup {}
@@ -80,10 +81,10 @@ require("config.telescope")
 -- LANGUAGE-SPECIFIC LSP CONFIGURATIONS
 
 vim.pack.add {
-  "https://github.com/mfussenegger/nvim-jdtls",  -- Java LSP config
-  "https://github.com/folke/lazydev.nvim",       -- NeoVim LuaLS config
-  "https://github.com/jidn/vim-dbml",                               -- DBML syntax
-  "https://github.com/matze/vim-move",
+  "https://github.com/mfussenegger/nvim-jdtls",      -- Java LSP config
+  "https://github.com/folke/lazydev.nvim",           -- NeoVim LuaLS config
+  "https://github.com/jidn/vim-dbml",                -- DBML syntax
+  "https://github.com/iamcco/markdown-preview.nvim", -- markdown preview in the browser
 }
 
 vim.lsp.config("dbml-language-server", {
