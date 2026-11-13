@@ -17,6 +17,7 @@ vim.pack.add {
   "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
   "https://github.com/kylechui/nvim-surround",
   "https://github.com/windwp/nvim-autopairs",
+  "https://github.com/godlygeek/tabular",
 }
 
 require("nvim-autopairs").setup {}
