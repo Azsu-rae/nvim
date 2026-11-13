@@ -30,3 +30,15 @@ vim.g.neovide_progress_bar_enabled = false
 
 local function paste() vim.api.nvim_paste(vim.fn.getreg("+"), true, -1) end
 vim.keymap.set({ "i","t" }, "<C-v>", paste, { silent = true, desc = "Paste" })
+
+vim.g.neovide_scale_factor = 1.0
+local change_scale_factor = function(delta)
+  vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * delta
+end
+vim.keymap.set("n", "<C-=>", function()
+  change_scale_factor(1.25)
+end)
+vim.keymap.set("n", "<C-->", function()
+  change_scale_factor(1/1.25)
+end)
+

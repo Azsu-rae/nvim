@@ -1,6 +1,10 @@
 
-colorscheme catppuccin
+colorscheme default
 lua require('vim._core.ui2').enable()
+
+if !empty(glob(stdpath("config") .. '/preferences.vim'))
+    exec 'source ' .. stdpath("config") .. '/preferences.vim'
+endif
 
 lua require('plugins')
 lua require('autocmds')
@@ -70,4 +74,6 @@ tnoremap <ESC><ESC> <C-\><C-n>
 for [v, a] in [["h", "LEFT"], ["l", "RIGHT"], ["k", "UP"], ["j", "DOWN"]]
     execute "tnoremap " . $"<M-{v}> " . $"<{a}>"
     execute "tnoremap " . $"<C-M-{v}> " . $"<C-{a}>"
+    execute "cnoremap " . $"<M-{v}> " . $"<{a}>"
+    execute "cnoremap " . $"<C-M-{v}> " . $"<C-{a}>"
 endfor

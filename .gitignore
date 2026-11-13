@@ -3,6 +3,8 @@
 
 !.gitignore
 
+preferences.vim
+
 nvim-pack-lock.json
 lazy-lock.json
 lazyvim.json
